@@ -5,3 +5,4 @@ version: '0.1'
 homepage: https://github.com/modouwifi/welcome-page
 url: https://github.com/modouwifi/welcome-page/releases/download/welcome-page.0.1/welcome-page.mpk
 email: tech@mochui.net
+package_id: com.modouwifi.welcome-page

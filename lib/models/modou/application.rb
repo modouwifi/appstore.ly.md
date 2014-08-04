@@ -8,8 +8,14 @@ module Modou
     attr_accessor :icon
     attr_accessor :description
     attr_accessor :email
+    attr_accessor :package_id
+    attr_accessor :md5_sum
+    attr_accessor :size
+    attr_accessor :release_date
+    attr_accessor :instructions
 
-    IVARS = %w{ name url version author homepage icon description email }.freeze
+    IVARS = %w{ name url version author homepage icon
+      description email package_id md5_sum size release_date instructions }.freeze
 
     def to_yml
       raise 'not implemented yet'

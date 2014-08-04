@@ -5,3 +5,4 @@ version: '0.1'
 homepage: https://github.com/modouwifi/modou-samba
 url: https://github.com/modouwifi/modou-samba/releases/download/modou-samba0.1/modou-samba0.1.tar.gz
 email: tech@mochui.net
+package_id: com.modouwifi.modou-samba

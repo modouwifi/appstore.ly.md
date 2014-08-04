@@ -12,6 +12,11 @@ module Modou
       it { should respond_to :to_hash }
       it { should respond_to :icon }
       it { should respond_to :description }
+      it { should respond_to :package_id }
+      it { should respond_to :md5_sum }
+      it { should respond_to :size }
+      it { should respond_to :release_date }
+      it { should respond_to :instructions }
     end
 
     describe "class methods" do

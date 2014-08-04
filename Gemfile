@@ -10,4 +10,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'shotgun'
+  gem 'pry'
 end

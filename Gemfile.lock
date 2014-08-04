@@ -68,6 +68,7 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  pry
   rspec (~> 2.12.0)
   shotgun
   sinatra

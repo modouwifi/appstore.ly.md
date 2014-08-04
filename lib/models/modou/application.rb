@@ -5,6 +5,11 @@ module Modou
     attr_accessor :version
     attr_accessor :author
     attr_accessor :homepage
+    attr_accessor :icon
+    attr_accessor :description
+    attr_accessor :email
+
+    IVARS = %w{ name url version author homepage icon description email }.freeze
 
     def to_yml
       raise 'not implemented yet'
@@ -12,7 +17,7 @@ module Modou
 
     def to_hash
       hash = Hash.new.tap do |hash|
-        %w{name url version author homepage}.map do |ivar|
+        IVARS.map do |ivar|
           hash[ivar] = instance_variable_get("@#{ivar}")
         end
       end
@@ -31,11 +36,9 @@ module Modou
         data = YAML.load(yml_content)
 
         new do |application|
-          application.name = data['name']
-          application.url = data['url']
-          application.version = data['version']
-          application.author = data['author']
-          application.homepage = data['homepage']
+          IVARS.each do |ivar|
+            application.instance_variable_set("@#{ivar}", data[ivar])
+          end
         end
       end
     end

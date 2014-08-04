@@ -10,6 +10,8 @@ module Modou
       it { should respond_to :version }
       it { should respond_to :to_yml }
       it { should respond_to :to_hash }
+      it { should respond_to :icon }
+      it { should respond_to :description }
     end
 
     describe "class methods" do

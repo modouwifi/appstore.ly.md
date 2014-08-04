@@ -6,3 +6,4 @@ homepage: https://github.com/modouwifi/hdns
 url: https://github.com/modouwifi/hdns/releases/download/hdns0.4.2/hdns-0.4.2.mpk
 email: tech@mochui.net
 package_id: com.modouwifi.hdns
+description: 魔豆上的高级 DNS

@@ -24,6 +24,7 @@ GEM
     lumberjack (1.0.9)
     method_source (0.8.2)
     multi_json (1.10.1)
+    newrelic_rpm (3.9.0.229)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -68,6 +69,7 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  newrelic_rpm
   pry
   rspec (~> 2.12.0)
   shotgun

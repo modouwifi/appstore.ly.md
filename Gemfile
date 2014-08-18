@@ -13,4 +13,5 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'shotgun'
   gem 'pry'
+  gem 'rake'
 end

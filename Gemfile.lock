@@ -36,6 +36,7 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     raindrops (0.11.0)
+    rake (10.3.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -77,6 +78,7 @@ DEPENDENCIES
   guard-rspec
   newrelic_rpm
   pry
+  rake
   rspec (~> 2.12.0)
   shotgun
   sinatra

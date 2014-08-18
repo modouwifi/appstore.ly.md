@@ -1,3 +1,3 @@
-require File.expand_path("../app.rb", __FILE__)
+require File.expand_path("../app_store_server.rb", __FILE__)
 
-run Sinatra::Application
+run Rack::Cascade.new [AppStoreServer]

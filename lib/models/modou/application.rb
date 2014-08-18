@@ -31,6 +31,10 @@ module Modou
       hash
     end
 
+    def fullname
+      "#{name}-#{version}.mpk"
+    end
+
     def initialize
       yield self if block_given?
     end

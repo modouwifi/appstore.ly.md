@@ -17,6 +17,16 @@ module Modou
       it { should respond_to :size }
       it { should respond_to :release_date }
       it { should respond_to :instructions }
+      it { should respond_to :fullname }
+
+      describe '#fullname' do
+        it 'generates fullname' do
+          app = Application.new
+          app.name = 'hdns'
+          app.version = '1.0'
+          app.fullname.should == 'hdns-1.0.mpk'
+        end
+      end
     end
 
     describe "class methods" do

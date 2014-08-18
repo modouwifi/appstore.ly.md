@@ -35,12 +35,21 @@ module Modou
       end
 
       hash['url'] = "http://appstore.ly.md/apps/#{fullname}"
+      hash['icon_url'] = icon_url
 
       hash
     end
 
     def fullname
       "#{name}-#{version}.mpk"
+    end
+
+    def icon_url
+      "http://appstore.ly.md/icons/#{icon_name}"
+    end
+
+    def icon_name
+      "#{name}-#{version}.png"
     end
 
     def initialize

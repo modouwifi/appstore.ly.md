@@ -28,4 +28,30 @@ class AppStoreServer < Sinatra::Application
     # warning: possible security loophole here
     send_file File.expand_path("../data/apps/#{app.fullname}", __FILE__), filename: app.fullname
   end
+
+  get '/apps/:app_id/icon' do
+    app = Modou::Store.app(params[:app_id])
+
+    # warning: possible security loophole here
+    send_file File.expand_path("../data/icons/#{app.icon_name}", __FILE__), filename: app.icon_name
+  end
+
+  get '/icons/:app_id' do
+    filename = File.expand_path("../data/icons/#{params[:app_id]}", __FILE__)
+
+    if File.exists?(filename)
+      icon_name = params[:app_id]
+    else
+      app = Modou::Store.app(params[:app_id])
+      if app
+        icon_name = app.icon_name
+
+        filename = File.expand_path("../data/icons/#{icon_name}", __FILE__)
+      else
+        status 404
+      end
+    end
+
+    send_file filename, filename: icon_name
+  end
 end

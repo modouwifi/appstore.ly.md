@@ -114,3 +114,30 @@ X-Content-Type-Options: nosniff
 +-----------------------------------------+
 
 ```
+
+### get icon of a certain app
+
+`GET /apps/APP_NAME/icon`
+
+    $ http get appstore.ly.md/apps/wps/icon
+
+Output:
+
+```
+HTTP/1.1 200 OK
+Connection: Keep-Alive
+Content-Disposition: attachment; filename="wps-0.4.png"
+Content-Length: 1672
+Content-Type: image/png
+Date: Mon, 18 Aug 2014 11:03:01 GMT
+Last-Modified: Mon, 18 Aug 2014 10:52:30 GMT
+Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+X-Content-Type-Options: nosniff
+
+
+
++-----------------------------------------+
+| NOTE: binary data not shown in terminal |
++-----------------------------------------+
+
+```

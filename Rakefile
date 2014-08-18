@@ -27,6 +27,15 @@ task :release_apps do
       if yml_file
         app_info = YAML.load_file(yml_file)
         `cp #{app_file} data/apps/#{app_info['name']}-#{app_info['version']}.mpk`
+
+        tmp_folder = tmp_folder_for_app_name(app_name_for_app_file(app_file))
+        require "pathname"
+
+        icon_path = Pathname.new(tmp_folder).join(manifest_hash['icon'])
+
+        if File.exists?(icon_path)
+          `cp #{icon_path} #{icon_path_for_app(app_info)}`
+        end
       end
     else
       puts "manifest.json not found for #{app_file}"
@@ -34,9 +43,21 @@ task :release_apps do
   end
 end
 
+def icon_path_for_app(app_hash)
+  "public/icons/#{app_hash['name']}-#{app_hash['version']}.png"
+end
+
+def app_name_for_app_file(app_file)
+  app_file.split('/').last.gsub('.mpk', '').gsub('.tar.gz', '')
+end
+
+def tmp_folder_for_app_name(app_name)
+  "tmp/app_folder/#{app_name}"
+end
+
 def manifest_hash_for_file(app_file)
-  app_name = app_file.split('/').last.gsub('.mpk', '').gsub('.tar.gz', '')
-  tmp_folder = "tmp/app_folder/#{app_name}"
+  app_name = app_name_for_app_file(app_file)
+  tmp_folder = tmp_folder_for_app_name(app_name)
 
   `mkdir -p #{tmp_folder}`
 

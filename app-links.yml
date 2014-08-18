@@ -4,3 +4,6 @@ github:
   - modouwifi/backlight-control
   - modouwifi/app-wps
   - modouwifi/pppoe-catch
+  - modouwifi/hdns
+  - modouwifi/modou-samba
+  - modouwifi/welcome-page

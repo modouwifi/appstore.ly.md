@@ -4,6 +4,12 @@
 
 ### list all apps
 
+`GET /apps`
+
+    $ http get appstore.ly.md/apps
+
+or
+
 `GET /list`
 
     $ http get appstore.ly.md/list
@@ -33,7 +39,7 @@ X-Content-Type-Options: nosniff
         "package_id": "com.modouwifi.modou-samba",
         "release_date": null,
         "size": 1351698,
-        "url": "https://github.com/modouwifi/modou-samba/releases/download/modou-samba0.1/modou-samba0.1.tar.gz",
+        "url": "http://appstore.ly.md/apps/modou-samba-0.1.mpk",
         "version": "0.1"
     },
     {
@@ -48,38 +54,69 @@ X-Content-Type-Options: nosniff
         "package_id": "com.modouwifi.welcome-page",
         "release_date": null,
         "size": 1056,
-        "url": "https://github.com/modouwifi/welcome-page/releases/download/welcome-page.0.1/welcome-page.mpk",
+        "url": "http://appstore.ly.md/apps/welcome-page-0.1.mpk",
         "version": "0.1"
-    },
-    {
-        "author": "modouwifi",
-        "description": "魔豆上的高级 DNS",
-        "email": "tech@mochui.net",
-        "homepage": "https://github.com/modouwifi/hdns",
-        "icon": null,
-        "instructions": null,
-        "md5_sum": "8b5369b1a4d14e80b44f7440304c1898",
-        "name": "hdns",
-        "package_id": "com.modouwifi.hdns",
-        "release_date": null,
-        "size": 12827,
-        "url": "https://github.com/modouwifi/hdns/releases/download/hdns0.4.2/hdns-0.4.2.mpk",
-        "version": "0.4.2"
-    },
-    {
-        "author": "modouwifi",
-        "description": "魔豆路由器背光控制应用",
-        "email": "tech@mochui.net",
-        "homepage": "https://github.com/modouwifi/backlight-control",
-        "icon": null,
-        "instructions": null,
-        "md5_sum": "ee895a75ffafe683ab7136026a99ffdb",
-        "name": "backlight-control",
-        "package_id": "com.modouwifi.backlight-control",
-        "release_date": null,
-        "size": 7269,
-        "url": "https://github.com/modouwifi/backlight-control/releases/download/1.0/backlight-control.tar.gz",
-        "version": "1.0"
     }
 ]
+```
+
+### get info of a certain app
+
+`GET /apps/APP_NAME`
+
+    $ http get appstore.ly.md/apps/hdns
+
+Output:
+
+```
+HTTP/1.1 200 OK
+Connection: Keep-Alive
+Content-Length: 395
+Content-Type: application/json
+Date: Mon, 18 Aug 2014 04:02:55 GMT
+Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+X-Content-Type-Options: nosniff
+
+{
+    "author": "modouwifi",
+    "description": "魔豆上的高级 DNS",
+    "email": "tech@mochui.net",
+    "homepage": "https://github.com/modouwifi/hdns",
+    "icon": null,
+    "instructions": null,
+    "md5_sum": "8b5369b1a4d14e80b44f7440304c1898",
+    "name": "hdns",
+    "package_id": "com.modouwifi.hdns",
+    "release_date": null,
+    "size": 12827,
+    "url": "http://appstore.ly.md/apps/hdns-0.4.2.mpk",
+    "version": "0.4.2"
+}
+```
+
+### download a certain app
+
+`GET /apps/APP_NAME/download`
+
+    $ http get appstore.ly.md/apps/hdns/download
+
+Output:
+
+```
+HTTP/1.1 200 OK
+Connection: Keep-Alive
+Content-Disposition: attachment; filename="hdns-0.4.2.mpk"
+Content-Length: 12827
+Content-Type: application/octet-stream
+Date: Mon, 18 Aug 2014 04:03:31 GMT
+Last-Modified: Mon, 28 Jul 2014 08:55:44 GMT
+Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+X-Content-Type-Options: nosniff
+
+
+
++-----------------------------------------+
+| NOTE: binary data not shown in terminal |
++-----------------------------------------+
+
 ```

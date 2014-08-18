@@ -28,6 +28,8 @@ module Modou
         end
       end
 
+      hash['url'] = "http://appstore.ly.md/apps/#{fullname}"
+
       hash
     end
 

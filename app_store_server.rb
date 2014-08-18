@@ -5,6 +5,8 @@ require File.expand_path("../lib/models/modou/store", __FILE__)
 
 class AppStoreServer < Sinatra::Application
   configure do
+    require 'newrelic_rpm'
+
     set :json_content_type, "application/json;charset=utf-8"
   end
 

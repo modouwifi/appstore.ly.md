@@ -33,7 +33,7 @@ class AppStoreServer < Sinatra::Application
     app = Modou::Store.app(params[:app_id])
 
     # warning: possible security loophole here
-    send_file File.expand_path("../data/icons/#{app.icon_name}", __FILE__), filename: app.icon_name
+    send_file File.expand_path("../data/icons/#{app.icon_name}", __FILE__), filename: app.icon_name, disposition: 'inline'
   end
 
   get '/icons/:app_id' do
@@ -52,6 +52,6 @@ class AppStoreServer < Sinatra::Application
       end
     end
 
-    send_file filename, filename: icon_name
+    send_file filename, filename: icon_name, disposition: 'inline'
   end
 end

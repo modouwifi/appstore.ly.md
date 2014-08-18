@@ -16,6 +16,22 @@ end
 
 desc 'move and rename downloaded apps from tmp/cache/apps to data/apps'
 task :release_apps do
+  Dir['tmp/cache/apps/*'].each do |app_file|
+    if manifest_hash = manifest_hash_for_file(app_file)
+      require "yaml"
+
+      yml_file = Dir['data/*.yml'].select do |file|
+        YAML.load_file(file)['package_id'] == manifest_hash['package_id']
+      end.first
+
+      if yml_file
+        app_info = YAML.load_file(yml_file)
+        `mv #{app_file} data/apps/#{app_info['name']}-#{app_info['version']}.mpk`
+      end
+    else
+      puts "manifest.json not found for #{app_file}"
+    end
+  end
 end
 
 def manifest_hash_for_file(app_file)

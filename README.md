@@ -126,10 +126,10 @@ Output:
 ```
 HTTP/1.1 200 OK
 Connection: Keep-Alive
-Content-Disposition: attachment; filename="wps-0.4.png"
+Content-Disposition: inline; filename="wps-0.4.png"
 Content-Length: 1672
 Content-Type: image/png
-Date: Mon, 18 Aug 2014 11:03:01 GMT
+Date: Mon, 18 Aug 2014 11:12:12 GMT
 Last-Modified: Mon, 18 Aug 2014 10:52:30 GMT
 Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
 X-Content-Type-Options: nosniff

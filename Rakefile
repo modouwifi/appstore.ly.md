@@ -14,21 +14,31 @@ task :download_apps do
   end
 end
 
+desc 'move and rename downloaded apps from tmp/cache/apps to data/apps'
+task :release_apps do
+end
+
+def manifest_hash_for_file(app_file)
+  app_name = app_file.split('/').last.gsub('.mpk', '').gsub('.tar.gz', '')
+  tmp_folder = "tmp/app_folder/#{app_name}"
+
+  `mkdir -p #{tmp_folder}`
+
+  `tar xzf #{app_file} -C #{tmp_folder}`
+
+  if File.exists?("#{tmp_folder}/manifest.json")
+    require "json"
+
+    JSON(File.read("#{tmp_folder}/manifest.json"))
+  end
+end
+
 desc 'generate meta info for app store from downloaded apps'
 task :gen_meta do
   Dir['tmp/cache/apps/*'].each do |app_file|
-    require "json"
     require "yaml"
 
-    app_name = app_file.split('/').last.gsub('.mpk', '').gsub('.tar.gz', '')
-    tmp_folder = "tmp/app_folder/#{app_name}"
-
-    `mkdir -p #{tmp_folder}`
-
-    `tar xzf #{app_file} -C #{tmp_folder}`
-
-    if File.exists?("#{tmp_folder}/manifest.json")
-      manifest_hash = JSON(File.read("#{tmp_folder}/manifest.json"))
+    if manifest_hash = manifest_hash_for_file(app_file)
 
       yml_file = Dir['data/*.yml'].select do |file|
         YAML.load_file(file)['package_id'] == manifest_hash['package_id']
@@ -40,7 +50,7 @@ task :gen_meta do
         File.write("data/#{manifest_hash['name']}.yml", merge_manifest_hash({}, manifest_hash).to_yaml)
       end
     else
-      puts "manifest.json not found for #{app_name}"
+      puts "manifest.json not found for #{app_file}"
     end
   end
 end

@@ -15,6 +15,7 @@ module Modou
     attr_accessor :instructions
     attr_accessor :require_os_version
     attr_accessor :install_location
+    attr_accessor :display_name
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions

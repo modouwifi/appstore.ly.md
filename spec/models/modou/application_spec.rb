@@ -20,6 +20,7 @@ module Modou
       it { should respond_to :fullname }
       it { should respond_to :require_os_version }
       it { should respond_to :install_location }
+      it { should respond_to :display_name }
 
       describe '#fullname' do
         it 'generates fullname' do

@@ -13,9 +13,12 @@ module Modou
     attr_accessor :size
     attr_accessor :release_date
     attr_accessor :instructions
+    attr_accessor :require_os_version
+    attr_accessor :install_location
 
     IVARS = %w{ name url version author homepage icon
-      description email package_id md5_sum size release_date instructions }.freeze
+      description email package_id md5_sum size release_date instructions
+      require_os_version install_location }.freeze
 
     def to_yml
       raise 'not implemented yet'

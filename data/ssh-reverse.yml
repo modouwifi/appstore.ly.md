@@ -12,3 +12,4 @@ description: 运行插件后，点击开始即可开启反向代理
 instructions: ''
 require_os_version: 0.6.17
 name: ssh-reverse
+size: 870508

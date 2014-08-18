@@ -26,7 +26,7 @@ task :release_apps do
 
       if yml_file
         app_info = YAML.load_file(yml_file)
-        `mv #{app_file} data/apps/#{app_info['name']}-#{app_info['version']}.mpk`
+        `cp #{app_file} data/apps/#{app_info['name']}-#{app_info['version']}.mpk`
       end
     else
       puts "manifest.json not found for #{app_file}"
@@ -61,10 +61,17 @@ task :gen_meta do
       end.first
 
       if yml_file
-        File.write(yml_file, merge_manifest_hash(YAML.load_file(yml_file), manifest_hash).to_yaml)
+        # already has definition, update it
+        hash = merge_manifest_hash(YAML.load_file(yml_file), manifest_hash)
       else
-        File.write("data/#{manifest_hash['name']}.yml", merge_manifest_hash({}, manifest_hash).to_yaml)
+        # new app, create it
+        hash = merge_manifest_hash({}, manifest_hash)
+        yml_file = "data/#{manifest_hash['name']}.yml"
       end
+
+      hash['size'] = File.size(app_file)
+
+      File.write(yml_file, hash.to_yaml)
     else
       puts "manifest.json not found for #{app_file}"
     end

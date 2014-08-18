@@ -12,3 +12,4 @@ install_location: external
 description: 开启此插件的同时，按住网络设备的wps按键，即可实现一键配置wifi连接
 instructions: 1.开启插件，点击开始. 2.长按设备端的wps按键
 require_os_version: 0.6.17
+size: 28121

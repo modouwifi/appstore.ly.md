@@ -4,16 +4,13 @@ require "sinatra/json"
 require File.expand_path("../lib/models/modou/store", __FILE__)
 
 class AppStoreServer < Sinatra::Application
-  get '/list' do
-    json Modou::Store.all_apps.map(&:to_hash)
-  end
-
   get '/apps' do
     json Modou::Store.all_apps.map(&:to_hash)
   end
 
   get '/apps/:app_id' do
     filename = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
+
     if File.exists?(filename)
       send_file filename, filename: filename
     else

@@ -8,12 +8,6 @@
 
     $ http get appstore.ly.md/apps
 
-or
-
-`GET /list`
-
-    $ http get appstore.ly.md/list
-
 Output:
 
 ```

@@ -141,3 +141,52 @@ X-Content-Type-Options: nosniff
 +-----------------------------------------+
 
 ```
+
+## Service Benchmark
+
+Throughput 500 requests per second, or 20,000 requests per minute.
+
+benchmark with command
+
+    $ ab -n 2000 -c 200 http://appstore.ly.md/apps
+
+Output:
+
+```
+Server Software:        Cowboy
+Server Hostname:        appstore.ly.md
+Server Port:            80
+
+Document Path:          /apps
+Document Length:        4137 bytes
+
+Concurrency Level:      200
+Time taken for tests:   3.733 seconds
+Complete requests:      2000
+Failed requests:        0
+Write errors:           0
+Total transferred:      8722000 bytes
+HTML transferred:       8274000 bytes
+Requests per second:    535.82 [#/sec] (mean)
+Time per request:       373.263 [ms] (mean)
+Time per request:       1.866 [ms] (mean, across all concurrent requests)
+Transfer rate:          2281.92 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       72   74   1.4     74      80
+Processing:   114  265  77.3    250     824
+Waiting:      114  262  71.7    249     757
+Total:        187  339  77.5    325     897
+
+Percentage of the requests served within a certain time (ms)
+  50%    325
+  66%    346
+  75%    363
+  80%    377
+  90%    423
+  95%    478
+  98%    571
+  99%    647
+ 100%    897 (longest request)
+```

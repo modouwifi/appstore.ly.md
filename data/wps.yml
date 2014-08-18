@@ -1,6 +1,7 @@
 ---
 package_id: com.modouwifi.app-wps
 display_name: 一键配置WPS
+name: wps
 author: 魔豆开发团队-阿耀
 email: zhouyao@mochui.net
 homepage: www.modouwifi.com

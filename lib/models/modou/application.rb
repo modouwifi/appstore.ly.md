@@ -19,7 +19,7 @@ module Modou
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions
-      require_os_version install_location }.freeze
+      require_os_version install_location display_name }.freeze
 
     def to_yml
       require "yaml"

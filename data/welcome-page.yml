@@ -1,11 +1,16 @@
 ---
+package_id: com.modou.welcome-page
 name: welcome-page
-author: modouwifi
-version: '0.1'
-homepage: https://github.com/modouwifi/welcome-page
-url: https://github.com/modouwifi/welcome-page/releases/download/welcome-page.0.1/welcome-page.mpk
-email: tech@mochui.net
-package_id: com.modouwifi.welcome-page
-description: 自定义上网欢迎页
-size: 1056
-md5_sum: 64ed6161d3910d97c6dec161adc7949a
+author: 魔豆路由器
+author_mail: rd@mochui.net
+homepage: www.modouwifi.com
+version: '0.4'
+release_date: 2014.08.07
+icon: ./res/icon_111X111.png
+location: internal
+description: 欢迎页
+display_name: welcome-page
+email: rd@mochui.net
+install_location: internal
+instructions: 
+require_os_version: 

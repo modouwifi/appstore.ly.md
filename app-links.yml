@@ -3,7 +3,7 @@ github:
   - modouwifi/app-ssh-reverse
   - modouwifi/backlight-control
   - modouwifi/app-wps
-  - modouwifi/pppoe-catch
+  - modouwifi/pppoe-migration-assistant
   - modouwifi/hdns
   - modouwifi/modou-samba
   - modouwifi/welcome-page

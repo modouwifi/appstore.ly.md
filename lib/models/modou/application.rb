@@ -22,7 +22,9 @@ module Modou
       require_os_version install_location }.freeze
 
     def to_yml
-      raise 'not implemented yet'
+      require "yaml"
+
+      to_hash.to_yaml
     end
 
     def to_hash

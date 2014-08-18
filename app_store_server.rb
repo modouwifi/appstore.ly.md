@@ -4,6 +4,10 @@ require "sinatra/json"
 require File.expand_path("../lib/models/modou/store", __FILE__)
 
 class AppStoreServer < Sinatra::Application
+  configure do
+    set :json_content_type, "application/json;charset=utf-8"
+  end
+
   get '/apps' do
     json Modou::Store.all_apps.map(&:to_hash)
   end

@@ -70,6 +70,7 @@ task :gen_meta do
       end
 
       hash['size'] = File.size(app_file)
+      hash['md5_sum'] = Digest::MD5.file(app_file).hexdigest
 
       File.write(yml_file, hash.to_yaml)
     else

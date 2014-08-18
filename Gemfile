@@ -14,4 +14,5 @@ group :development, :test do
   gem 'shotgun'
   gem 'pry'
   gem 'rake'
+  gem 'octokit'
 end

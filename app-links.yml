@@ -1,5 +1,6 @@
 ---
-- https://github.com/modouwifi/app-ssh-reverse/releases/download/0.1.1/app-ssh-reverse-0.1.1.mpk
-- https://github.com/modouwifi/backlight-control/releases/download/0.2.1/backlight_0.2.1.mpk
-- https://github.com/modouwifi/app-wps/releases/download/0.4/app-wps-0.4.mpk
-- https://github.com/modouwifi/pppoe-catch/releases/download/pppoecatch0.1/pppoe-catch0.1.mpk
+github:
+  - modouwifi/app-ssh-reverse
+  - modouwifi/backlight-control
+  - modouwifi/app-wps
+  - modouwifi/pppoe-catch

@@ -12,44 +12,54 @@ Output:
 
 ```
 HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
 Connection: keep-alive
-Content-Length: 1750
+Content-Length: 4137
 Content-Type: application/json
-Date: Mon, 18 Aug 2014 02:46:42 GMT
-Server: WEBrick/1.3.1 (Ruby/2.0.0/2014-05-08)
+Date: Tue, 19 Aug 2014 08:50:28 GMT
+Server: Cowboy
+Status: 200 OK
 Via: 1.1 vegur
 X-Content-Type-Options: nosniff
 
 [
     {
-        "author": "modouwifi",
-        "description": "魔豆上基于 Samba 协议的文件共享",
-        "email": "tech@mochui.net",
-        "homepage": "https://github.com/modouwifi/modou-samba",
-        "icon": null,
+        "author": "魔豆路由器",
+        "description": "科学上网",
+        "display_name": "科学上网",
+        "email": "rd@mochui.net",
+        "homepage": "www.modouwifi.com",
+        "icon": "./res/icon_111X111.png",
+        "icon_url": "http://appstore.ly.md/icons/hdns-0.4.4.png",
+        "install_location": "internal",
         "instructions": null,
-        "md5_sum": "5dfd3edd3694f42c2ed5c88fa3ea7284",
-        "name": "modou-samba",
-        "package_id": "com.modouwifi.modou-samba",
-        "release_date": null,
-        "size": 1351698,
-        "url": "http://appstore.ly.md/apps/modou-samba-0.1.mpk",
-        "version": "0.1"
+        "md5_sum": "8f06cbeca5ed5b6225e95dbc760851f0",
+        "name": "hdns",
+        "package_id": "com.modouwifi.hdns",
+        "release_date": "2014.08.18",
+        "require_os_version": null,
+        "size": 13259,
+        "url": "http://appstore.ly.md/apps/hdns-0.4.4.mpk",
+        "version": "0.4.4"
     },
     {
-        "author": "modouwifi",
-        "description": "自定义上网欢迎页",
-        "email": "tech@mochui.net",
-        "homepage": "https://github.com/modouwifi/welcome-page",
-        "icon": null,
+        "author": "魔豆路由器",
+        "description": "欢迎页",
+        "display_name": "welcome-page",
+        "email": "rd@mochui.net",
+        "homepage": "www.modouwifi.com",
+        "icon": "./res/icon_111X111.png",
+        "icon_url": "http://appstore.ly.md/icons/welcome-page-0.4.png",
+        "install_location": "internal",
         "instructions": null,
-        "md5_sum": "64ed6161d3910d97c6dec161adc7949a",
+        "md5_sum": "915c95ac881ee53bd2aebe15de01f75b",
         "name": "welcome-page",
-        "package_id": "com.modouwifi.welcome-page",
-        "release_date": null,
-        "size": 1056,
-        "url": "http://appstore.ly.md/apps/welcome-page-0.1.mpk",
-        "version": "0.1"
+        "package_id": "com.modou.welcome-page",
+        "release_date": "2014.08.07",
+        "require_os_version": null,
+        "size": 68149,
+        "url": "http://appstore.ly.md/apps/welcome-page-0.4.mpk",
+        "version": "0.4"
     }
 ]
 ```
@@ -64,27 +74,34 @@ Output:
 
 ```
 HTTP/1.1 200 OK
-Connection: Keep-Alive
-Content-Length: 395
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+Content-Length: 508
 Content-Type: application/json
-Date: Mon, 18 Aug 2014 04:02:55 GMT
-Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+Date: Tue, 19 Aug 2014 08:57:38 GMT
+Server: Cowboy
+Status: 200 OK
+Via: 1.1 vegur
 X-Content-Type-Options: nosniff
 
 {
-    "author": "modouwifi",
-    "description": "魔豆上的高级 DNS",
-    "email": "tech@mochui.net",
-    "homepage": "https://github.com/modouwifi/hdns",
-    "icon": null,
+    "author": "魔豆路由器",
+    "description": "科学上网",
+    "display_name": "科学上网",
+    "email": "rd@mochui.net",
+    "homepage": "www.modouwifi.com",
+    "icon": "./res/icon_111X111.png",
+    "icon_url": "http://appstore.ly.md/icons/hdns-0.4.4.png",
+    "install_location": "internal",
     "instructions": null,
-    "md5_sum": "8b5369b1a4d14e80b44f7440304c1898",
+    "md5_sum": "8f06cbeca5ed5b6225e95dbc760851f0",
     "name": "hdns",
     "package_id": "com.modouwifi.hdns",
-    "release_date": null,
-    "size": 12827,
-    "url": "http://appstore.ly.md/apps/hdns-0.4.2.mpk",
-    "version": "0.4.2"
+    "release_date": "2014.08.18",
+    "require_os_version": null,
+    "size": 13259,
+    "url": "http://appstore.ly.md/apps/hdns-0.4.4.mpk",
+    "version": "0.4.4"
 }
 ```
 
@@ -98,13 +115,16 @@ Output:
 
 ```
 HTTP/1.1 200 OK
-Connection: Keep-Alive
-Content-Disposition: attachment; filename="hdns-0.4.2.mpk"
-Content-Length: 12827
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+Content-Disposition: attachment; filename="hdns-0.4.4.mpk"
+Content-Length: 13259
 Content-Type: application/octet-stream
-Date: Mon, 18 Aug 2014 04:03:31 GMT
-Last-Modified: Mon, 28 Jul 2014 08:55:44 GMT
-Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+Date: Tue, 19 Aug 2014 08:58:01 GMT
+Last-Modified: Tue, 19 Aug 2014 08:43:15 GMT
+Server: Cowboy
+Status: 200 OK
+Via: 1.1 vegur
 X-Content-Type-Options: nosniff
 
 
@@ -125,13 +145,16 @@ Output:
 
 ```
 HTTP/1.1 200 OK
-Connection: Keep-Alive
+Access-Control-Allow-Origin: *
+Connection: keep-alive
 Content-Disposition: inline; filename="wps-0.4.png"
 Content-Length: 1672
 Content-Type: image/png
-Date: Mon, 18 Aug 2014 11:12:12 GMT
-Last-Modified: Mon, 18 Aug 2014 10:52:30 GMT
-Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+Date: Tue, 19 Aug 2014 08:58:47 GMT
+Last-Modified: Tue, 19 Aug 2014 08:43:15 GMT
+Server: Cowboy
+Status: 200 OK
+Via: 1.1 vegur
 X-Content-Type-Options: nosniff
 
 

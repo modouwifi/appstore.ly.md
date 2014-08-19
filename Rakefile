@@ -44,7 +44,7 @@ task :release_apps do
 end
 
 def icon_path_for_app(app_hash)
-  "public/icons/#{app_hash['name']}-#{app_hash['version']}.png"
+  "data/icons/#{app_hash['name']}-#{app_hash['version']}.png"
 end
 
 def app_name_for_app_file(app_file)

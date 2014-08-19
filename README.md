@@ -49,17 +49,17 @@ X-Content-Type-Options: nosniff
         "email": "rd@mochui.net",
         "homepage": "www.modouwifi.com",
         "icon": "./res/icon_111X111.png",
-        "icon_url": "http://appstore.ly.md/icons/welcome-page-0.4.png",
+        "icon_url": "http://appstore.ly.md/icons/welcome-page-0.4.1.png",
         "install_location": "internal",
         "instructions": null,
-        "md5_sum": "915c95ac881ee53bd2aebe15de01f75b",
+        "md5_sum": "bec09075dfcafaf07061a8d8b76f7fc2",
         "name": "welcome-page",
-        "package_id": "com.modou.welcome-page",
-        "release_date": "2014.08.07",
+        "package_id": "com.modouwifi.welcome-page",
+        "release_date": "2014.08.19",
         "require_os_version": null,
-        "size": 68149,
-        "url": "http://appstore.ly.md/apps/welcome-page-0.4.mpk",
-        "version": "0.4"
+        "size": 69218,
+        "url": "http://appstore.ly.md/apps/welcome-page-0.4.1.mpk",
+        "version": "0.4.1"
     }
 ]
 ```

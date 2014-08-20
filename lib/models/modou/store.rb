@@ -1,3 +1,4 @@
+require_relative 'semantic_version'
 require_relative 'application'
 
 module Modou
@@ -13,7 +14,13 @@ module Modou
 
       # return apps according to given criteria
       def apps(criteria = {})
-        raise 'not implemented yet'
+        all_apps.tap do |apps|
+          if criteria[:os_version]
+            apps.reject! do |app|
+              SemanticVersion.new(app.require_os_version) > criteria[:os_version]
+            end
+          end
+        end
       end
 
       # return app with app-name

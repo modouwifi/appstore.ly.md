@@ -13,8 +13,13 @@ class AppStoreServer < Sinatra::Application
   end
 
   # GET /apps                      => list all apps info, json format
+  # GET /apps?os_version=0.6.1     => list all apps info, json format, with require_os_version <= os_version
   get '/apps' do
-    json Modou::Store.all_apps.map(&:to_hash)
+    if params[:os_version]
+      json Modou::Store.apps(params).map(&:to_hash)
+    else
+      json Modou::Store.all_apps.map(&:to_hash)
+    end
   end
 
   # GET /apps/hdns                 => hdns app info, json format

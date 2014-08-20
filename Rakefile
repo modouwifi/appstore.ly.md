@@ -18,7 +18,7 @@ task :download_apps do
   end
 end
 
-desc 'move and rename downloaded apps from tmp/cache/apps to data/apps'
+desc 'copy and rename downloaded apps from tmp/cache/apps to data/apps'
 task :release_apps do
   Dir['tmp/cache/apps/*'].each do |app_file|
     if manifest_hash = manifest_hash_for_file(app_file)

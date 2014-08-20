@@ -12,10 +12,13 @@ class AppStoreServer < Sinatra::Application
     headers 'Access-Control-Allow-Origin' => '*'
   end
 
+  # GET /apps                      => list all apps info, json format
   get '/apps' do
     json Modou::Store.all_apps.map(&:to_hash)
   end
 
+  # GET /apps/hdns                 => hdns app info, json format
+  # GET /apps/hdns-0.4.4.mpk       => hdns mpk download
   get '/apps/:app_id' do
     filename = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
 
@@ -26,6 +29,7 @@ class AppStoreServer < Sinatra::Application
     end
   end
 
+  # GET /apps/hdns/download        => hdns mpk download
   get '/apps/:app_id/download' do
     app = Modou::Store.app(params[:app_id])
 
@@ -33,6 +37,7 @@ class AppStoreServer < Sinatra::Application
     send_file File.expand_path("../data/apps/#{app.fullname}", __FILE__), filename: app.fullname
   end
 
+  # GET /apps/hdns/icon            => hdns icon download
   get '/apps/:app_id/icon' do
     app = Modou::Store.app(params[:app_id])
 
@@ -40,6 +45,8 @@ class AppStoreServer < Sinatra::Application
     send_file File.expand_path("../data/icons/#{app.icon_name}", __FILE__), filename: app.icon_name, disposition: 'inline'
   end
 
+  # GET /icons/hdns                => hdns icon download
+  # GET /icons/hdns-0.4.4.png      => hdns icon download
   get '/icons/:app_id' do
     filename = File.expand_path("../data/icons/#{params[:app_id]}", __FILE__)
 

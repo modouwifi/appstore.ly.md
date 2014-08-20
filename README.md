@@ -71,10 +71,18 @@ X-Content-Type-Options: nosniff
 
 ### list available apps
 
-`GET /apps?os_version=CURRENT_OS_VERSION`
+`GET /apps?os_version=CURRENT_OS_VERSION&install_location=INSTALL_LOCATION`
 
-    $ http get 'appstore.ly.md/apps?os_version=0.6.13'
+    $ http get 'appstore.ly.md/apps?os_version=0.6.13&install_location=internal'
 
+#### params format
+
+| params                | format                    | example
+| --------------------- | ------------------------- | --------
+| CURRENT_OS_VERSION    | major.minor.patch         | 0.6.20
+| INSTALL_LOCATION      | 'internal' or 'external'  | internal
+
+All params are __optional__
 
 ### get info of a certain app
 

@@ -16,9 +16,10 @@ module Modou
       def apps(criteria = {})
         all_apps.tap do |apps|
           if criteria[:os_version]
-            apps.reject! do |app|
-              SemanticVersion.new(app.require_os_version) > criteria[:os_version]
-            end
+            apps.reject! { |app| SemanticVersion.new(app.require_os_version) > criteria[:os_version] }
+          end
+          if criteria[:install_location]
+            apps.reject! { |app| app.cannot_install_at(criteria[:install_location]) }
           end
         end
       end

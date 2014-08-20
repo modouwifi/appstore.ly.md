@@ -12,14 +12,17 @@ class AppStoreServer < Sinatra::Application
     headers 'Access-Control-Allow-Origin' => '*'
   end
 
-  # GET /apps                      => list all apps info, json format
-  # GET /apps?os_version=0.6.1     => list all apps info, json format, with require_os_version <= os_version
+  # GET /apps                               => list all apps info, json format
+  # GET /apps?os_version=OS_VERSION         => same above, with app.require_os_version <= OS_VERSION
+  # GET /apps?install_location=LOCATION     => same above, with app.install_location == LOCATION
+  #
+  # params can be combined, e.g. GET /apps?install_location=internal&os_version=0.6.1
   get '/apps' do
-    if params[:os_version]
-      json Modou::Store.apps(params).map(&:to_hash)
-    else
-      json Modou::Store.all_apps.map(&:to_hash)
+    unless %w{ internal external }.include?(params[:install_location])
+      params[:install_location] = nil
     end
+
+    json Modou::Store.apps(params).map(&:to_hash)
   end
 
   # GET /apps/hdns                 => hdns app info, json format

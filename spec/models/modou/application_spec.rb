@@ -23,6 +23,8 @@ module Modou
       it { should respond_to :display_name }
       it { should respond_to :icon_url }
       it { should respond_to :updated_at }
+      it { should respond_to :can_install_at? }
+      it { should respond_to :cannot_install_at }
 
       describe '#fullname' do
         it 'generates fullname' do
@@ -30,6 +32,32 @@ module Modou
           app.name = 'hdns'
           app.version = '1.0'
           app.fullname.should == 'hdns-1.0.mpk'
+        end
+      end
+
+      describe '#can_install_at? && #cannot_install_at' do
+        let(:internal_app) { Application.new.tap { |app| app.install_location = 'internal' } }
+        let(:external_app) { Application.new.tap { |app| app.install_location = 'external' } }
+        let(:both_app) { Application.new.tap { |app| app.install_location = 'both' } }
+
+        it 'just works' do
+          internal_app.can_install_at?(:internal).should be_true
+          internal_app.can_install_at?('internal').should be_true
+          internal_app.can_install_at?('external').should be_false
+          internal_app.cannot_install_at('external').should be_true
+          internal_app.cannot_install_at(:internal).should be_false
+
+          external_app.can_install_at?(:internal).should be_false
+          external_app.can_install_at?('internal').should be_false
+          external_app.can_install_at?('external').should be_true
+          external_app.cannot_install_at('external').should be_false
+          external_app.cannot_install_at(:internal).should be_true
+
+          both_app.can_install_at?(:internal).should be_true
+          both_app.can_install_at?('internal').should be_true
+          both_app.can_install_at?('external').should be_true
+          both_app.cannot_install_at('external').should be_false
+          both_app.cannot_install_at(:internal).should be_false
         end
       end
     end

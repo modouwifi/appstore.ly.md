@@ -53,6 +53,16 @@ module Modou
       "#{name}-#{version}.png"
     end
 
+    def can_install_at?(location)
+      return true if self.install_location == 'both'
+
+      self.install_location == location.to_s
+    end
+
+    def cannot_install_at(location)
+      !can_install_at?(location)
+    end
+
     def initialize
       yield self if block_given?
     end

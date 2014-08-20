@@ -1,5 +1,7 @@
 # App Store for Modouwifi
 
+[![Code Climate](https://codeclimate.com/github/modouwifi/appstore.ly.md/badges/gpa.svg)](https://codeclimate.com/github/modouwifi/appstore.ly.md)
+
 ## APIs
 
 ### list all apps

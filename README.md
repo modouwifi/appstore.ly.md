@@ -69,6 +69,13 @@ X-Content-Type-Options: nosniff
 ]
 ```
 
+### list available apps
+
+`GET /apps?os_version=CURRENT_OS_VERSION`
+
+    $ http get 'appstore.ly.md/apps?os_version=0.6.13'
+
+
 ### get info of a certain app
 
 `GET /apps/APP_NAME`

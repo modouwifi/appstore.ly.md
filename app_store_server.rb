@@ -25,7 +25,11 @@ class AppStoreServer < Sinatra::Application
     if File.exists?(filepath)
       send_file filepath, filename: params[:app_id]
     else
-      json Modou::Store.app(params[:app_id]).to_hash
+      begin
+        json Modou::Store.app(params[:app_id]).to_hash
+      rescue Exception => e
+        status 404
+      end
     end
   end
 
@@ -33,20 +37,26 @@ class AppStoreServer < Sinatra::Application
   get '/apps/:app_id/download' do
     app = Modou::Store.app(params[:app_id])
 
-    # warning: possible security loophole here
-    filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
+    if app
+      filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
 
-    send_file filepath, filename: app.fullname
+      send_file filepath, filename: app.fullname
+    else
+      status 404
+    end
   end
 
   # GET /apps/hdns/icon            => hdns icon download
   get '/apps/:app_id/icon' do
     app = Modou::Store.app(params[:app_id])
 
-    # warning: possible security loophole here
-    filepath = File.expand_path("../data/icons/#{app.icon_name}", __FILE__)
+    if app
+      filepath = File.expand_path("../data/icons/#{app.icon_name}", __FILE__)
 
-    send_file filepath, filename: app.icon_name, disposition: 'inline'
+      send_file filepath, filename: app.icon_name, disposition: 'inline'
+    else
+      status 404
+    end
   end
 
   # GET /icons/hdns                => hdns icon download
@@ -57,16 +67,14 @@ class AppStoreServer < Sinatra::Application
     if File.exists?(filepath)
       icon_name = params[:app_id]
     else
-      app = Modou::Store.app(params[:app_id])
-      if app
+      if app = Modou::Store.app(params[:app_id])
         icon_name = app.icon_name
 
         filepath = File.expand_path("../data/icons/#{icon_name}", __FILE__)
-      else
-        status 404
       end
     end
 
+    # implicit 404 if file not found
     send_file filepath, filename: icon_name, disposition: 'inline'
   end
 end

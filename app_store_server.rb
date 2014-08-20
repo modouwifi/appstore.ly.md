@@ -20,10 +20,10 @@ class AppStoreServer < Sinatra::Application
   # GET /apps/hdns                 => hdns app info, json format
   # GET /apps/hdns-0.4.4.mpk       => hdns mpk download
   get '/apps/:app_id' do
-    filename = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
+    filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
 
-    if File.exists?(filename)
-      send_file filename, filename: filename
+    if File.exists?(filepath)
+      send_file filepath, filename: params[:app_id]
     else
       json Modou::Store.app(params[:app_id]).to_hash
     end
@@ -34,7 +34,9 @@ class AppStoreServer < Sinatra::Application
     app = Modou::Store.app(params[:app_id])
 
     # warning: possible security loophole here
-    send_file File.expand_path("../data/apps/#{app.fullname}", __FILE__), filename: app.fullname
+    filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
+
+    send_file filepath, filename: app.fullname
   end
 
   # GET /apps/hdns/icon            => hdns icon download
@@ -42,27 +44,29 @@ class AppStoreServer < Sinatra::Application
     app = Modou::Store.app(params[:app_id])
 
     # warning: possible security loophole here
-    send_file File.expand_path("../data/icons/#{app.icon_name}", __FILE__), filename: app.icon_name, disposition: 'inline'
+    filepath = File.expand_path("../data/icons/#{app.icon_name}", __FILE__)
+
+    send_file filepath, filename: app.icon_name, disposition: 'inline'
   end
 
   # GET /icons/hdns                => hdns icon download
   # GET /icons/hdns-0.4.4.png      => hdns icon download
   get '/icons/:app_id' do
-    filename = File.expand_path("../data/icons/#{params[:app_id]}", __FILE__)
+    filepath = File.expand_path("../data/icons/#{params[:app_id]}", __FILE__)
 
-    if File.exists?(filename)
+    if File.exists?(filepath)
       icon_name = params[:app_id]
     else
       app = Modou::Store.app(params[:app_id])
       if app
         icon_name = app.icon_name
 
-        filename = File.expand_path("../data/icons/#{icon_name}", __FILE__)
+        filepath = File.expand_path("../data/icons/#{icon_name}", __FILE__)
       else
         status 404
       end
     end
 
-    send_file filename, filename: icon_name, disposition: 'inline'
+    send_file filepath, filename: icon_name, disposition: 'inline'
   end
 end

@@ -1,7 +1,7 @@
 require "sinatra"
 require "sinatra/json"
 
-require File.expand_path("../lib/models/modou/store", __FILE__)
+require_relative "lib/models/modou/store"
 
 class AppStoreServer < Sinatra::Application
   configure do

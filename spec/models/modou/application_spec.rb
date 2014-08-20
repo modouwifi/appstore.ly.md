@@ -22,6 +22,7 @@ module Modou
       it { should respond_to :install_location }
       it { should respond_to :display_name }
       it { should respond_to :icon_url }
+      it { should respond_to :updated_at }
 
       describe '#fullname' do
         it 'generates fullname' do

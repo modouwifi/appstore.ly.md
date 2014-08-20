@@ -97,7 +97,13 @@ task :gen_meta do
       hash['size'] = File.size(app_file)
       hash['md5_sum'] = Digest::MD5.file(app_file).hexdigest
 
-      File.write(yml_file, hash.to_yaml)
+      if YAML.load_file(yml_file) != hash
+        puts "updating #{yml_file}"
+
+        hash['updated_at'] = Time.now
+
+        File.write(yml_file, hash.to_yaml)
+      end
     else
       puts "manifest.json not found for #{app_file}"
     end

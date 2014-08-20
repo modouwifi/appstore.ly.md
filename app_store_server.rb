@@ -18,6 +18,7 @@ class AppStoreServer < Sinatra::Application
   end
 
   # GET /apps/hdns                 => hdns app info, json format
+  # GET /apps/com.modouwifi.hdns   => hdns app info, json format
   # GET /apps/hdns-0.4.4.mpk       => hdns mpk download
   get '/apps/:app_id' do
     filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
@@ -33,7 +34,8 @@ class AppStoreServer < Sinatra::Application
     end
   end
 
-  # GET /apps/hdns/download        => hdns mpk download
+  # GET /apps/hdns/download                 => hdns mpk download
+  # GET /apps/com.modouwifi.hdns/download   => hdns mpk download
   get '/apps/:app_id/download' do
     app = Modou::Store.app(params[:app_id])
 
@@ -46,7 +48,8 @@ class AppStoreServer < Sinatra::Application
     end
   end
 
-  # GET /apps/hdns/icon            => hdns icon download
+  # GET /apps/hdns/icon                     => hdns icon download
+  # GET /apps/com.modouwifi.hdns/icon       => hdns icon download
   get '/apps/:app_id/icon' do
     app = Modou::Store.app(params[:app_id])
 
@@ -59,8 +62,9 @@ class AppStoreServer < Sinatra::Application
     end
   end
 
-  # GET /icons/hdns                => hdns icon download
-  # GET /icons/hdns-0.4.4.png      => hdns icon download
+  # GET /icons/hdns                         => hdns icon download
+  # GET /icons/com.modouwifi.hdns           => hdns icon download
+  # GET /icons/hdns-0.4.4.png               => hdns icon download
   get '/icons/:app_id' do
     filepath = File.expand_path("../data/icons/#{params[:app_id]}", __FILE__)
 

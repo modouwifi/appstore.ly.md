@@ -12,8 +12,10 @@ module Modou
       end
 
       # return app with app-name
-      def app(name)
-        all_apps.select { |app| app.name == name }.first
+      def app(name_or_package_id)
+        all_apps.select do |app|
+          app.name == name_or_package_id || app.package_id == name_or_package_id
+        end.first
       end
     end
   end

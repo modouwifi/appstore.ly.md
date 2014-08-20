@@ -11,6 +11,11 @@ module Modou
         end.sort_by(&:updated_at).reverse
       end
 
+      # return apps according to given criteria
+      def apps(criteria = {})
+        raise 'not implemented yet'
+      end
+
       # return app with app-name
       def app(name_or_package_id)
         all_apps.select do |app|

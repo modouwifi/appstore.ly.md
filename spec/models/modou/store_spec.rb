@@ -5,6 +5,7 @@ module Modou
     describe 'class methods' do
       subject { Store }
       it { should respond_to :all_apps }
+      it { should respond_to :apps }
       it { should respond_to :app }
 
       describe '.app' do

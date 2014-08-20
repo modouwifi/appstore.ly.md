@@ -16,10 +16,20 @@ module Modou
       version('0.1.5').should < version('0.1.333')
     end
 
+    it 'compares to string as well' do
+      version('0.6.12').should == '0.6.12'
+      version('0.6.13').should > '0.6.12'
+      version('0.1.5').should < '0.1.333'
+    end
+
+    it 'handle nil as well' do
+      version(nil).should < '0.1.1'
+    end
+
     it 'get major, minor and patch right' do
       version('0.7').major.should == 0
       version('0.7').minor.should == 7
-      version('0.7').patch.should == nil
+      version('0.7').patch.should == 0
     end
   end
 end

@@ -1,6 +1,7 @@
 # App Store for Modouwifi
 
 [![Code Climate](https://codeclimate.com/github/modouwifi/appstore.ly.md/badges/gpa.svg)](https://codeclimate.com/github/modouwifi/appstore.ly.md)
+[![Build Status](https://travis-ci.org/modouwifi/appstore.ly.md.svg?branch=master)](https://travis-ci.org/modouwifi/appstore.ly.md)
 
 ## APIs
 

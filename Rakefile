@@ -111,19 +111,21 @@ task :gen_meta do
 end
 
 def merge_manifest_hash(app_store_hash, manifest_hash)
-  app_store_hash['package_id'] = manifest_hash['package_id']
-  app_store_hash['display_name'] = manifest_hash['name']
-  app_store_hash['author'] = manifest_hash['author']
-  app_store_hash['email'] = manifest_hash['author_mail']
-  app_store_hash['homepage'] = manifest_hash['homepage']
-  app_store_hash['version'] = manifest_hash['version']
-  app_store_hash['release_date'] = manifest_hash['release_date']
-  app_store_hash['icon'] = manifest_hash['icon']
-  app_store_hash['install_location'] = manifest_hash['location']
-  app_store_hash['display_name'] = manifest_hash['name']
-  app_store_hash['description'] = manifest_hash['description']
-  app_store_hash['instructions'] = manifest_hash['instruction']
-  app_store_hash['require_os_version'] = manifest_hash['os_version']
+  %w{ package_id author homepage version release_date icon description }.each do |spec|
+    app_store_hash[spec] = manifest_hash[spec]
+  end
+
+  spec_mapping = {
+    display_name:       'name',
+    email:              'author_mail',
+    install_location:   'location',
+    instructions:       'instruction',
+    require_os_version: 'os_version'
+  }
+
+  spec_mapping.each do |key, value|
+    app_store_hash[key.to_s] = manifest_hash[value]
+  end
 
   app_store_hash
 end

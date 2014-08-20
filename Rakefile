@@ -87,22 +87,22 @@ task :gen_meta do
 
       if yml_file
         # already has definition, update it
-        hash = merge_manifest_hash(YAML.load_file(yml_file), manifest_hash)
+        app_info = merge_manifest_hash(YAML.load_file(yml_file), manifest_hash)
       else
         # new app, create it
-        hash = merge_manifest_hash({}, manifest_hash)
+        app_info = merge_manifest_hash({}, manifest_hash)
         yml_file = "data/#{manifest_hash['name']}.yml"
       end
 
-      hash['size'] = File.size(app_file)
-      hash['md5_sum'] = Digest::MD5.file(app_file).hexdigest
+      app_info['size'] = File.size(app_file)
+      app_info['md5_sum'] = Digest::MD5.file(app_file).hexdigest
 
-      if YAML.load_file(yml_file) != hash
+      if YAML.load_file(yml_file) != app_info
         puts "updating #{yml_file}"
 
-        hash['updated_at'] = Time.now
+        app_info['updated_at'] = Time.now
 
-        File.write(yml_file, hash.to_yaml)
+        File.write(yml_file, app_info.to_yaml)
       end
     else
       puts "manifest.json not found for #{app_file}"

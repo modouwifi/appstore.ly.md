@@ -5,6 +5,8 @@
 
 ## APIs
 
+For latest API definitions, please refer to [app_store_server.rb](https://github.com/modouwifi/appstore.ly.md/blob/master/app_store_server.rb)
+
 ### list all apps
 
 `GET /apps`

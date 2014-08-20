@@ -10,7 +10,11 @@ task :download_apps do
     latest_release = Octokit.releases(app).first
     asset = latest_release.assets.first
 
-    system(ENV, "wget #{asset.browser_download_url} -c -O tmp/cache/apps/#{asset.name}")
+    if File.exists?("tmp/cache/apps/#{asset.name}")
+      puts "#{asset.name} is already downloaded."
+    else
+      system(ENV, "wget #{asset.browser_download_url} -O tmp/cache/apps/#{asset.name}")
+    end
   end
 end
 

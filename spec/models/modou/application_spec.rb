@@ -25,6 +25,7 @@ module Modou
       it { should respond_to :updated_at }
       it { should respond_to :can_install_at? }
       it { should respond_to :cannot_install_at }
+      it { should respond_to :available? }
 
       describe '#fullname' do
         it 'generates fullname' do

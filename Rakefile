@@ -100,6 +100,7 @@ task :gen_meta do
       if YAML.load_file(yml_file) != app_info
         puts "updating #{yml_file}"
 
+        app_info['available'] = true
         app_info['updated_at'] = Time.now
 
         File.write(yml_file, app_info.to_yaml)

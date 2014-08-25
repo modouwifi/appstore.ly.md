@@ -14,4 +14,5 @@ instructions: 1.开启插件，点击开始. 2.长按设备端的wps按键
 require_os_version: 0.6.17
 size: 28121
 md5_sum: 9cc42625008c983c7b88b79c96d12e2e
-updated_at: 2014-08-20 20:06:55.189580000 +08:00
+updated_at: 2014-08-25 10:26:45.090218000 +08:00
+available: true

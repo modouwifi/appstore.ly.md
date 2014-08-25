@@ -17,10 +17,11 @@ module Modou
     attr_accessor :install_location
     attr_accessor :display_name
     attr_accessor :updated_at
+    attr_accessor :available
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions
-      require_os_version install_location display_name updated_at }.freeze
+      require_os_version install_location display_name updated_at available }.freeze
 
     def to_yml
       require "yaml"
@@ -61,6 +62,10 @@ module Modou
 
     def cannot_install_at(location)
       !can_install_at?(location)
+    end
+
+    def available?
+      @available
     end
 
     def initialize

@@ -14,4 +14,5 @@ require_os_version: 0.6.17
 name: ssh-reverse
 size: 870508
 md5_sum: 662d69708c00625f8bd63025958be1f2
-updated_at: 2014-08-20 20:06:55.151341000 +08:00
+updated_at: 2014-08-25 10:26:45.013459000 +08:00
+available: true

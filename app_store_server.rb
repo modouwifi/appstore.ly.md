@@ -25,6 +25,11 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.apps(params).map(&:to_hash)
   end
 
+  # GET /unavailable_apps                   => list all apps info, json format
+  get '/unavailable_apps' do
+    json Modou::Store.unavailable_apps.map(&:to_hash)
+  end
+
   # GET /apps/hdns                 => hdns app info, json format
   # GET /apps/com.modouwifi.hdns   => hdns app info, json format
   # GET /apps/hdns-0.4.4.mpk       => hdns mpk download

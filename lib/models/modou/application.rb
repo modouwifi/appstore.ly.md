@@ -18,6 +18,7 @@ module Modou
     attr_accessor :display_name
     attr_accessor :updated_at
     attr_accessor :available
+    attr_accessor :why_unavailable
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions
@@ -38,6 +39,8 @@ module Modou
 
       hash['url'] = "http://appstore.ly.md/apps/#{fullname}"
       hash['icon_url'] = icon_url
+
+      hash['why_unavailable'] = self.why_unavailable if unavailable?
 
       hash
     end
@@ -68,6 +71,10 @@ module Modou
       @available
     end
 
+    def unavailable?
+      !available?
+    end
+
     def initialize
       yield self if block_given?
     end
@@ -82,6 +89,7 @@ module Modou
           IVARS.each do |ivar|
             application.instance_variable_set("@#{ivar}", data[ivar])
           end
+          application.why_unavailable = data['why_unavailable'] if application.unavailable?
         end
       end
     end

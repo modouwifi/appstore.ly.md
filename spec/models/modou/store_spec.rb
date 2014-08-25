@@ -7,6 +7,7 @@ module Modou
       it { should respond_to :all_apps }
       it { should respond_to :apps }
       it { should respond_to :app }
+      it { should respond_to :unavailable_apps }
 
       describe '.app' do
         it 'has hdns' do

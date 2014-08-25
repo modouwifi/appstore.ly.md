@@ -10,3 +10,5 @@ description: 魔豆上基于 Samba 协议的文件共享
 size: 1351698
 md5_sum: 5dfd3edd3694f42c2ed5c88fa3ea7284
 updated_at: 2014-08-19 20:06:55.291907000 +08:00
+why_unavailable: no manifest.json
+available: false

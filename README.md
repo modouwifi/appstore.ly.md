@@ -86,17 +86,19 @@ Output:
 ```
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
-Connection: Keep-Alive
-Content-Length: 1256
+Connection: keep-alive
+Content-Length: 1257
 Content-Type: application/json
-Date: Mon, 25 Aug 2014 02:54:17 GMT
-Server: WEBrick/1.3.1 (Ruby/2.0.0/2013-05-14)
+Date: Mon, 25 Aug 2014 02:59:37 GMT
+Server: Cowboy
+Status: 200 OK
+Via: 1.1 vegur
 X-Content-Type-Options: nosniff
 
 [
     {
         "author": "modouwifi",
-        "available": null,
+        "available": false,
         "description": "魔豆上基于 Samba 协议的文件共享",
         "display_name": null,
         "email": "tech@mochui.net",
@@ -111,7 +113,7 @@ X-Content-Type-Options: nosniff
         "release_date": null,
         "require_os_version": null,
         "size": 1351698,
-        "updated_at": "2014-08-19 20:06:55 +0800",
+        "updated_at": "2014-08-19 12:06:55 +0000",
         "url": "http://appstore.ly.md/apps/modou-samba-0.1.mpk",
         "version": "0.1",
         "why_unavailable": "no manifest.json"

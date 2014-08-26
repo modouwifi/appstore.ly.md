@@ -130,3 +130,17 @@ def merge_manifest_hash(app_store_hash, manifest_hash)
 
   app_store_hash
 end
+
+desc 'push *.mpk to qiniu'
+task :push_to_qiniu do
+  require "dotenv"
+  Dotenv.load
+
+  `qboxrsctl login #{ENV['QINIU_ACCESS_KEY']} #{ENV['QINIU_SECRET_KEY']}`
+
+  Dir['data/apps/*.mpk'].each do |file|
+    key = file[5..-1]
+    `qboxrsctl put #{ENV['QINIU_BUCKET']} #{key} #{file}`
+    puts "#{file} pushed to http://#{ENV['QINIU_BUCKET']}.qiniudn.com/#{key}"
+  end
+end

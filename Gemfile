@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.0.0'
 
@@ -6,6 +6,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'newrelic_rpm'
 gem 'unicorn'
+gem 'qiniu'
 
 group :development, :test do
   gem 'rspec', '~> 2.12.0'
@@ -15,4 +16,5 @@ group :development, :test do
   gem 'pry'
   gem 'rake'
   gem 'octokit'
+  gem 'dotenv'
 end

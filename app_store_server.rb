@@ -6,10 +6,22 @@ require_relative "lib/models/modou/store"
 class AppStoreServer < Sinatra::Application
   configure do
     require 'newrelic_rpm'
+
+    require "qiniu"
+
+    Qiniu.establish_connection! access_key: ENV['QINIU_ACCESS_KEY'], secret_key: ENV['QINIU_SECRET_KEY']
   end
 
   before do
     headers 'Access-Control-Allow-Origin' => '*'
+  end
+
+  helpers do
+    def send_app_file(app_name)
+      primitive_url = "http://#{ENV['QINIU_BUCKET']}.qiniudn.com/apps/#{app_name}"
+
+      redirect Qiniu::Auth.authorize_download_url(primitive_url)
+    end
   end
 
   # GET /apps                               => list all apps info, json format
@@ -37,7 +49,7 @@ class AppStoreServer < Sinatra::Application
     filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
 
     if File.exists?(filepath)
-      send_file filepath, filename: params[:app_id]
+      send_app_file params[:app_id]
     else
       begin
         json Modou::Store.app(params[:app_id]).to_hash
@@ -55,7 +67,7 @@ class AppStoreServer < Sinatra::Application
     if app
       filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
 
-      send_file filepath, filename: app.fullname
+      send_app_file(app.fullname)
     else
       status 404
     end

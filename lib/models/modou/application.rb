@@ -19,6 +19,8 @@ module Modou
     attr_accessor :updated_at
     attr_accessor :available
     attr_accessor :why_unavailable
+    attr_accessor :tp_enabled
+    attr_accessor :mobile_enabled
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions

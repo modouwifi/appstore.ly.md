@@ -28,6 +28,8 @@ module Modou
       it { should respond_to :available? }
       it { should respond_to :unavailable? }
       it { should respond_to :why_unavailable }
+      it { should respond_to :tp_enabled }
+      it { should respond_to :mobile_enabled }
 
       describe '#fullname' do
         it 'generates fullname' do

@@ -17,8 +17,8 @@ class AppStoreServer < Sinatra::Application
   end
 
   helpers do
-    def send_app_file(app_name)
-      primitive_url = "http://#{ENV['QINIU_BUCKET']}.qiniudn.com/apps/#{app_name}"
+    def send_qiniu_file(filepath)
+      primitive_url = "http://#{ENV['QINIU_BUCKET']}.qiniudn.com/#{filepath}"
 
       redirect Qiniu::Auth.authorize_download_url(primitive_url)
     end
@@ -49,7 +49,7 @@ class AppStoreServer < Sinatra::Application
     filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
 
     if File.exists?(filepath)
-      send_app_file params[:app_id]
+      send_qiniu_file "apps/#{params[:app_id]}"
     else
       begin
         json Modou::Store.app(params[:app_id]).to_hash
@@ -67,7 +67,7 @@ class AppStoreServer < Sinatra::Application
     if app
       filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
 
-      send_app_file(app.fullname)
+      send_qiniu_file "apps/#{app.fullname}"
     else
       status 404
     end
@@ -81,7 +81,7 @@ class AppStoreServer < Sinatra::Application
     if app
       filepath = File.expand_path("../data/icons/#{app.icon_name}", __FILE__)
 
-      send_file filepath, filename: app.icon_name, disposition: 'inline'
+      send_qiniu_file "icons/#{app.icon_name}"
     else
       status 404
     end
@@ -104,6 +104,6 @@ class AppStoreServer < Sinatra::Application
     end
 
     # implicit 404 if file not found
-    send_file filepath, filename: icon_name, disposition: 'inline'
+    send_qiniu_file "icons/#{icon_name}"
   end
 end

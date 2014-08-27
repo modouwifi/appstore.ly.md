@@ -5,7 +5,7 @@ name: pppoe-migration-assistant
 author: 魔豆开发团队-junjian
 author_mail: junjian@mochui.net
 homepage: www.modouwifi.com
-version: '0.1'
+version: 0.2.1
 release_date: 2014.08.11
 icon: ./res/icon.png
 location: internal
@@ -16,7 +16,7 @@ email: junjian@mochui.net
 install_location: internal
 instructions: 1.xxxx; 2.xxxxx
 require_os_version: 0.6.12
-size: 52195
-md5_sum: 7f6c27460df123a83dc5f89b164f67b7
-updated_at: 2014-08-25 10:26:45.259843000 +08:00
+size: 52330
+md5_sum: fbc54da61c5d59f589b8179bc90cf194
+updated_at: 2014-08-27 23:17:06.769534000 +08:00
 available: true

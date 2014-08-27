@@ -1,15 +1,15 @@
 ---
 name: modou-samba
 author: 魔豆开发团队-junjian
-version: '0.3'
+version: 0.3.1
 homepage: www.modouwifi.com
 url: https://github.com/modouwifi/modou-samba/releases/download/modou-samba0.1/modou-samba0.1.tar.gz
 email: junjian@mochui.net
 package_id: com.modouwifi.samba
 description: 实现局域网内文件共享
-size: 2166792
-md5_sum: ad95de44f0a7fb9757d2e0b5d754386f
-updated_at: 2014-08-27 17:02:21.369619000 +08:00
+size: 2166935
+md5_sum: 9ca2025e6b1ada93ee117897dd81ef3f
+updated_at: 2014-08-27 18:09:28.090501000 +08:00
 why_unavailable: no manifest.json
 available: true
 release_date: 2014.08.27
@@ -17,4 +17,4 @@ icon: ./res/icon.png
 display_name: 魔豆文件共享
 install_location: internal
 instructions: 1.xxxx; 2.xxxxx
-require_os_version: 0.6.21
+require_os_version: 0.6.22

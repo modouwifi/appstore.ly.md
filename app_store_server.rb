@@ -65,8 +65,6 @@ class AppStoreServer < Sinatra::Application
     app = Modou::Store.app(params[:app_id])
 
     if app
-      filepath = File.expand_path("../data/apps/#{app.fullname}", __FILE__)
-
       send_qiniu_file "apps/#{app.fullname}"
     else
       status 404
@@ -79,8 +77,6 @@ class AppStoreServer < Sinatra::Application
     app = Modou::Store.app(params[:app_id])
 
     if app
-      filepath = File.expand_path("../data/icons/#{app.icon_name}", __FILE__)
-
       send_qiniu_file "icons/#{app.icon_name}"
     else
       status 404
@@ -102,11 +98,7 @@ class AppStoreServer < Sinatra::Application
     if File.exists?(filepath)
       icon_name = params[:app_id]
     else
-      if app = Modou::Store.app(params[:app_id])
-        icon_name = app.icon_name
-
-        filepath = File.expand_path("../data/icons/#{icon_name}", __FILE__)
-      end
+      icon_name = app.icon_name if app = Modou::Store.app(params[:app_id])
     end
 
     # implicit 404 if file not found

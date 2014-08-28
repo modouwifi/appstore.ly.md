@@ -9,6 +9,7 @@ gem 'unicorn'
 gem 'qiniu'
 
 group :development, :test do
+  gem 'simplecov'
   gem 'rspec', '~> 2.12.0'
   gem 'guard'
   gem 'guard-rspec'

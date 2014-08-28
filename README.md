@@ -2,6 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/modouwifi/appstore.ly.md/badges/gpa.svg)](https://codeclimate.com/github/modouwifi/appstore.ly.md)
 [![Build Status](https://travis-ci.org/modouwifi/appstore.ly.md.svg?branch=master)](https://travis-ci.org/modouwifi/appstore.ly.md)
+[![Coverage Status](https://coveralls.io/repos/modouwifi/appstore.ly.md/badge.png?branch=master)](https://coveralls.io/r/modouwifi/appstore.ly.md?branch=master)
 
 ## APIs
 

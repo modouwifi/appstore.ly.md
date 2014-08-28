@@ -46,6 +46,9 @@ describe 'AppStoreServer' do
     end
   end
 
+  describe 'GET /unavailable_apps' do
+  end
+
   describe 'GET /apps/:app_id' do
     it 'gets app info with app name' do
       get '/apps/hdns' do

@@ -42,9 +42,9 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.unavailable_apps.map(&:to_hash)
   end
 
-  # GET /apps/hdns                 => hdns app info, json format
-  # GET /apps/com.modouwifi.hdns   => hdns app info, json format
-  # GET /apps/hdns-0.4.4.mpk       => hdns mpk download
+  # GET /apps/hdns                          => hdns app info, json format
+  # GET /apps/com.modouwifi.hdns            => hdns app info, json format
+  # GET /apps/hdns-0.4.4.mpk                => hdns mpk download
   get '/apps/:app_id' do
     filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
 
@@ -85,6 +85,12 @@ class AppStoreServer < Sinatra::Application
     else
       status 404
     end
+  end
+
+  # GET /apps/hdns/versions                 => all version info of hdns, json format
+  # GET /apps/com.modouwifi.hdns/versions   => all version info of hdns, json format
+  get '/apps/:app_id/versions' do
+    raise 'not implemented yet'
   end
 
   # GET /icons/hdns                         => hdns icon download

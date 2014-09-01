@@ -82,7 +82,7 @@ X-Content-Type-Options: nosniff
 
 ### list available upgrades
 
-`GET /available_upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
+`GET /available-upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
 
 ### list unavailable apps (and why)
 

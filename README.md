@@ -8,6 +8,27 @@
 
 Follow [Guidelines extracted from Heroku Platform API](https://github.com/interagent/http-api-design)
 
+## Rate Limits
+
+10 requests per minute. When rate limit is reached, a status code of `429` is returned.
+
+    $ http appstore.ly.md/apps
+
+```
+HTTP/1.1 429 Too Many Requests
+Connection: close
+Content-Type: text/plain
+Date: Mon, 01 Sep 2014 09:33:39 GMT
+Retry-After: 60
+Server: Cowboy
+Status: 429 Too Many Requests
+Via: 1.1 vegur
+X-Content-Type-Options: nosniff
+
+Retry later
+
+```
+
 ## APIs
 
 For latest API definitions, please refer to [app_store_server.rb](https://github.com/modouwifi/appstore.ly.md/blob/master/app_store_server.rb)

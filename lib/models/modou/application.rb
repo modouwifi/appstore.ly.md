@@ -1,3 +1,5 @@
+require_relative 'semantic_version'
+
 module Modou
   class Application
     attr_accessor :name
@@ -79,6 +81,10 @@ module Modou
 
     def unavailable?
       !available?
+    end
+
+    def semantic_version
+      SemanticVersion.new(version)
     end
 
     def initialize

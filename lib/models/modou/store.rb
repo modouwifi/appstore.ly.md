@@ -1,4 +1,3 @@
-require_relative 'semantic_version'
 require_relative 'application'
 
 module Modou
@@ -40,7 +39,7 @@ module Modou
           app_full_name =~ /^(.+)-([^-]+)$/
           app_name, app_version = $1, $2
 
-          if app(app_name) && SemanticVersion.new(app(app_name).version) > app_version
+          if app(app_name) && app(app_name).semantic_version > app_version
             app(app_name)
           else
             nil

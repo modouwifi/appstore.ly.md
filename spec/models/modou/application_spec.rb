@@ -34,6 +34,16 @@ module Modou
       it { should respond_to :latest_version }
       it { should respond_to :release_notes }
       it { should respond_to :id }
+      it { should respond_to :semantic_version }
+
+      describe '#semantic_version' do
+        let(:app) { Application.new.tap { |app| app.version = '0.1.1' } }
+        subject { app }
+        its(:semantic_version) { should be_a SemanticVersion }
+        its(:semantic_version) { should < '0.1.2' }
+        its(:semantic_version) { should > '0.0.1' }
+        its(:semantic_version) { should == '0.1.1' }
+      end
 
       describe '#fullname' do
         it 'generates fullname' do

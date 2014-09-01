@@ -24,10 +24,11 @@ module Modou
     attr_accessor :versions
     attr_accessor :latest_version
     attr_accessor :release_notes
+    attr_accessor :id
 
     IVARS = %w{ name url version author homepage icon
       description email package_id md5_sum size release_date instructions
-      require_os_version install_location display_name updated_at available }.freeze
+      require_os_version install_location display_name updated_at available id }.freeze
 
     def to_yml
       require "yaml"

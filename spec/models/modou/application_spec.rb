@@ -33,6 +33,7 @@ module Modou
       it { should respond_to :versions }
       it { should respond_to :latest_version }
       it { should respond_to :release_notes }
+      it { should respond_to :id }
 
       describe '#fullname' do
         it 'generates fullname' do

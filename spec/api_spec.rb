@@ -46,7 +46,13 @@ describe 'AppStoreServer' do
     end
   end
 
-  describe 'GET /unavailable-apps' do
+  describe 'GET /apps/unavailble' do
+    it 'gets unavailable apps' do
+      get '/apps/unavailable' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should > 0
+      end
+    end
   end
 
   describe 'GET /available-upgrades' do

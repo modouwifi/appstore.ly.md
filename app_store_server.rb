@@ -37,8 +37,8 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.apps(params).map(&:to_hash)
   end
 
-  # GET /unavailable-apps                   => list all apps info, json format
-  get '/unavailable-apps' do
+  # GET /apps/unavailable                   => list all apps info, json format
+  get '/apps/unavailable' do
     json Modou::Store.unavailable_apps.map(&:to_hash)
   end
 

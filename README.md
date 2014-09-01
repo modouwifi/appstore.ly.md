@@ -88,9 +88,9 @@ X-Content-Type-Options: nosniff
 
 ### list unavailable apps (and why)
 
-`GET /unavailable-apps`
+`GET /apps/unavailable`
 
-    $ http get 'appstore.ly.md/unavailable-apps'
+    $ http get 'appstore.ly.md/apps/unavailable'
 
 #### params format
 

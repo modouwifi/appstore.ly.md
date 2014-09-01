@@ -9,6 +9,8 @@ require "active_support"
 
 class AppStoreServer < Sinatra::Application
 
+  ALLOWED_ORIGINS = [ /http:\/\/modouwifi\.net/, /http:\/\/\d+\.\d+\.\d+\.\d+/ ].freeze
+
   # rate limiting
   if ENV['RACK_ENV'] == 'production'
     use Rack::Attack
@@ -50,11 +52,7 @@ class AppStoreServer < Sinatra::Application
     headers 'Access-Control-Allow-Origin' => '*'
 
     if env['HTTP_ORIGIN']
-      origin_allowed = [ /http:\/\/modouwifi\.net/, /http:\/\/\d+\.\d+\.\d+\.\d+/ ].find do |pattern|
-        env['HTTP_ORIGIN'] =~ pattern
-      end
-
-      halt 403 unless origin_allowed
+      halt 403 unless ALLOWED_ORIGINS.find { |p| env['HTTP_ORIGIN'] =~ p }
     end
   end
 

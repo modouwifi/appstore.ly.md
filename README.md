@@ -55,43 +55,48 @@ X-Content-Type-Options: nosniff
 
 [
     {
-        "author": "魔豆路由器",
-        "description": "科学上网",
-        "display_name": "科学上网",
-        "email": "rd@mochui.net",
+        "author": "魔豆开发团队-junjian",
+        "available": true,
+        "description": "简单完成新老路由器的交接工作",
+        "display_name": "PPPoE账号迁移助手",
+        "email": "junjian@mochui.net",
         "homepage": "www.modouwifi.com",
-        "icon": "./res/icon_111X111.png",
-        "icon_url": "http://appstore.ly.md/icons/hdns-0.4.4.png",
+        "icon": "./res/icon.png",
+        "icon_url": "http://appstore.ly.md/icons/pppoe-migration-assistant-0.2.1.png",
         "install_location": "internal",
-        "instructions": null,
-        "md5_sum": "8f06cbeca5ed5b6225e95dbc760851f0",
-        "name": "hdns",
-        "package_id": "com.modouwifi.hdns",
-        "release_date": "2014.08.18",
-        "require_os_version": null,
-        "size": 13259,
-        "url": "http://appstore.ly.md/apps/hdns-0.4.4.mpk",
-        "version": "0.4.4"
+        "instructions": "1.xxxx; 2.xxxxx",
+        "md5_sum": "fbc54da61c5d59f589b8179bc90cf194",
+        "name": "pppoe-migration-assistant",
+        "package_id": "com.modouwifi.pppoecatch",
+        "release_date": "2014.08.11",
+        "require_os_version": "0.6.12",
+        "size": 52330,
+        "updated_at": "2014-09-01T03:23:37Z",
+        "url": "http://appstore.ly.md/apps/pppoe-migration-assistant-0.2.1.mpk",
+        "version": "0.2.1"
     },
     {
-        "author": "魔豆路由器",
-        "description": "欢迎页",
-        "display_name": "welcome-page",
-        "email": "rd@mochui.net",
+        "author": "魔豆开发团队",
+        "available": true,
+        "description": "使用此应用可以开启或关闭魔豆屏幕的背光自动熄灭功能",
+        "display_name": "背光控制",
+        "email": "cs@mochui.net",
         "homepage": "www.modouwifi.com",
-        "icon": "./res/icon_111X111.png",
-        "icon_url": "http://appstore.ly.md/icons/welcome-page-0.4.1.png",
+        "icon": "./appicon_backlight_normal.png",
+        "icon_url": "http://appstore.ly.md/icons/backlight-control-0.2.png",
         "install_location": "internal",
-        "instructions": null,
-        "md5_sum": "bec09075dfcafaf07061a8d8b76f7fc2",
-        "name": "welcome-page",
-        "package_id": "com.modouwifi.welcome-page",
-        "release_date": "2014.08.19",
-        "require_os_version": null,
-        "size": 69218,
-        "url": "http://appstore.ly.md/apps/welcome-page-0.4.1.mpk",
-        "version": "0.4.1"
-    }
+        "instructions": "开启应用后就两个按钮，简单明了",
+        "md5_sum": "31330db8ad82d974cec2278d34ccd9a6",
+        "name": "backlight-control",
+        "package_id": "com.modouwifi.backlight-control",
+        "release_date": "2014.08.18",
+        "require_os_version": "0.6.17",
+        "size": 3657,
+        "updated_at": "2014-09-01T03:23:36Z",
+        "url": "http://appstore.ly.md/apps/backlight-control-0.2.mpk",
+        "version": "0.2"
+    },
+// more here...
 ]
 ```
 
@@ -146,6 +151,7 @@ X-Content-Type-Options: nosniff
 
 {
     "author": "魔豆路由器",
+    "available": true,
     "description": "科学上网",
     "display_name": "科学上网",
     "email": "rd@mochui.net",
@@ -160,9 +166,11 @@ X-Content-Type-Options: nosniff
     "release_date": "2014.08.18",
     "require_os_version": null,
     "size": 13259,
+    "updated_at": "2014-09-01T03:23:36Z",
     "url": "http://appstore.ly.md/apps/hdns-0.4.4.mpk",
     "version": "0.4.4"
 }
+
 ```
 
 ### download a certain app

@@ -102,7 +102,9 @@ task :gen_meta do
         puts "updating #{yml_file}"
 
         app_info['available'] = true
-        app_info['updated_at'] = Time.now
+
+        require "time"
+        app_info['updated_at'] = Time.now.utc.iso8601
 
         File.write(yml_file, app_info.to_yaml)
       end

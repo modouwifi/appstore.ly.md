@@ -51,7 +51,7 @@ describe 'AppStoreServer' do
       get '/apps' do
         expect(last_response).to be_ok
 
-        JSON(last_response.body).count.should == Modou::Store.all_apps.count
+        JSON(last_response.body).count.should == Modou::Store.all_available_apps.count
       end
     end
 
@@ -59,7 +59,7 @@ describe 'AppStoreServer' do
       get '/apps?os_version=0.0.1' do
         expect(last_response).to be_ok
 
-        JSON(last_response.body).count.should < Modou::Store.all_apps.count
+        JSON(last_response.body).count.should < Modou::Store.all_available_apps.count
       end
     end
 
@@ -67,7 +67,7 @@ describe 'AppStoreServer' do
       get '/apps?install_location=external' do
         expect(last_response).to be_ok
 
-        JSON(last_response.body).count.should < Modou::Store.all_apps.count
+        JSON(last_response.body).count.should < Modou::Store.all_available_apps.count
       end
     end
   end

@@ -37,7 +37,7 @@ module Modou
         let(:wps) { Application.new.tap { |app| app.require_os_version = '0.3.1' } }
 
         before do
-          Store.stub(:all_apps).and_return([hdns, wps])
+          Store.stub(:all_available_apps).and_return([hdns, wps])
         end
 
         it 'filters apps' do

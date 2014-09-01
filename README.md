@@ -4,6 +4,10 @@
 [![Build Status](https://travis-ci.org/modouwifi/appstore.ly.md.svg?branch=master)](https://travis-ci.org/modouwifi/appstore.ly.md)
 [![Coverage Status](https://coveralls.io/repos/modouwifi/appstore.ly.md/badge.png?branch=master)](https://coveralls.io/r/modouwifi/appstore.ly.md?branch=master)
 
+## Design Guideline
+
+Follow [Guidelines extracted from Heroku Platform API](https://github.com/interagent/http-api-design)
+
 ## APIs
 
 For latest API definitions, please refer to [app_store_server.rb](https://github.com/modouwifi/appstore.ly.md/blob/master/app_store_server.rb)

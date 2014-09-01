@@ -82,9 +82,9 @@ X-Content-Type-Options: nosniff
 
 ### list available upgrades
 
-`GET /available-upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
+`GET /apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
 
-    $ http get 'appstore.ly.md/available-upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1'
+    $ http get 'appstore.ly.md/apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1'
 
 ### list unavailable apps (and why)
 

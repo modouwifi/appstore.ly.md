@@ -42,8 +42,8 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.unavailable_apps.map(&:to_hash)
   end
 
-  # GET /available-upgrades?apps[]=hdns-0.4.1&apps[]=welcome-page-0.1
-  get '/available-upgrades' do
+  # GET /apps/upgrades?apps[]=hdns-0.4.1&apps[]=welcome-page-0.1
+  get '/apps/upgrades' do
     json Modou::Store.available_upgrades(params[:apps]).map(&:to_hash)
   end
 

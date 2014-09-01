@@ -20,6 +20,32 @@ describe 'AppStoreServer' do
     end
   end
 
+  describe 'HTTP Cross-Site Attack Prevention' do
+    it 'denies requests from bad origins' do
+      get '/apps/hdns/download', {}, { 'HTTP_ORIGIN' => 'http://google.com' } do
+        last_response.status.should == 403
+      end
+    end
+
+    it 'allow requests from http://modouwifi.net' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://modouwifi.net' } do
+        last_response.status.should == 200
+      end
+    end
+
+    it 'allow requests from http://192.168.18.1' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://192.168.18.1' } do
+        last_response.status.should == 200
+      end
+    end
+
+    it 'allow requests from http://192.168.19.1' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://192.168.19.1' } do
+        last_response.status.should == 200
+      end
+    end
+  end
+
   describe 'GET /apps' do
     it "gets a list of apps" do
       get '/apps' do

@@ -81,6 +81,10 @@ describe 'AppStoreServer' do
       get '/apps/hdns-0.0.1.mpk' do
         last_response.status.should == 404
       end
+
+      get '/apps/blablabla-0.0.1.mpk' do
+        last_response.status.should == 404
+      end
     end
   end
 

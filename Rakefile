@@ -91,6 +91,7 @@ task :gen_meta do
       else
         # new app, create it
         app_info = merge_manifest_hash({}, manifest_hash)
+        app_info['id'] = SecureRandom.uuid
         yml_file = "data/#{manifest_hash['name']}.yml"
       end
 

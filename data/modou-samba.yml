@@ -9,7 +9,7 @@ package_id: com.modouwifi.samba
 description: 实现局域网内文件共享
 size: 2166935
 md5_sum: 9ca2025e6b1ada93ee117897dd81ef3f
-updated_at: 2014-08-27 18:09:28.090501000 +08:00
+updated_at: 2014-09-01 11:20:42.734035000 +08:00
 why_unavailable: no manifest.json
 available: true
 release_date: 2014.08.27
@@ -18,3 +18,4 @@ display_name: 魔豆文件共享
 install_location: internal
 instructions: 1.xxxx; 2.xxxxx
 require_os_version: 0.6.22
+id: bb9d0ce1-42ec-4064-b3bd-858288f94fb5

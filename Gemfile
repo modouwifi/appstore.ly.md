@@ -7,6 +7,8 @@ gem 'sinatra-contrib'
 gem 'newrelic_rpm'
 gem 'unicorn'
 gem 'qiniu'
+gem 'rack-attack'
+gem 'activesupport'
 
 group :development, :test do
   gem 'simplecov', require: false

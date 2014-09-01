@@ -46,7 +46,7 @@ describe 'AppStoreServer' do
     end
   end
 
-  describe 'GET /unavailable_apps' do
+  describe 'GET /unavailable-apps' do
   end
 
   describe 'GET /available-upgrades' do

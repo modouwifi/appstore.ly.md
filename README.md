@@ -84,51 +84,13 @@ X-Content-Type-Options: nosniff
 
 `GET /available-upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
 
+    $ http get 'appstore.ly.md/available-upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1'
+
 ### list unavailable apps (and why)
 
-`GET /unavailable_apps`
+`GET /unavailable-apps`
 
-    $ http get 'appstore.ly.md/unavailable_apps'
-
-Output:
-
-```
-HTTP/1.1 200 OK
-Access-Control-Allow-Origin: *
-Connection: keep-alive
-Content-Length: 1257
-Content-Type: application/json
-Date: Mon, 25 Aug 2014 02:59:37 GMT
-Server: Cowboy
-Status: 200 OK
-Via: 1.1 vegur
-X-Content-Type-Options: nosniff
-
-[
-    {
-        "author": "modouwifi",
-        "available": false,
-        "description": "魔豆上基于 Samba 协议的文件共享",
-        "display_name": null,
-        "email": "tech@mochui.net",
-        "homepage": "https://github.com/modouwifi/modou-samba",
-        "icon": null,
-        "icon_url": "http://appstore.ly.md/icons/modou-samba-0.1.png",
-        "install_location": null,
-        "instructions": null,
-        "md5_sum": "5dfd3edd3694f42c2ed5c88fa3ea7284",
-        "name": "modou-samba",
-        "package_id": "com.modouwifi.modou-samba",
-        "release_date": null,
-        "require_os_version": null,
-        "size": 1351698,
-        "updated_at": "2014-08-19 12:06:55 +0000",
-        "url": "http://appstore.ly.md/apps/modou-samba-0.1.mpk",
-        "version": "0.1",
-        "why_unavailable": "no manifest.json"
-    }
-]
-```
+    $ http get 'appstore.ly.md/unavailable-apps'
 
 #### params format
 

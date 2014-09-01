@@ -8,6 +8,13 @@ module Modou
       it { should respond_to :apps }
       it { should respond_to :app }
       it { should respond_to :unavailable_apps }
+      it { should respond_to :available_upgrades }
+
+      describe '.available_upgrades' do
+        it 'gets available upgrades' do
+          Store.available_upgrades(['hdns-0.0.1']).count.should == 1
+        end
+      end
 
       describe '.app' do
         it 'has hdns' do

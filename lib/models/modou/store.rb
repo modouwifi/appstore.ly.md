@@ -33,6 +33,18 @@ module Modou
         end.select(&:unavailable?).sort_by(&:updated_at).reverse
       end
 
+      def available_upgrades(app_full_names)
+        app_full_names.map do |app_full_name|
+          app_full_name =~ /^(.+)-([^-]+)$/
+          app_name, app_version = $1, $2
+          if app(app_name) && SemanticVersion.new(app(app_name).version) > app_version
+            app(app_name)
+          else
+            nil
+          end
+        end.compact
+      end
+
       # return app with app-name
       def app(id_or_name_or_package_id)
         all_apps.select do |app|

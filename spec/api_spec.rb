@@ -49,6 +49,30 @@ describe 'AppStoreServer' do
   describe 'GET /unavailable_apps' do
   end
 
+  describe 'GET /available_upgrades' do
+    it 'gets available upgrades' do
+      get '/available_upgrades?apps[]=hdns-0.0.1' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 1
+        JSON(last_response.body).first['name'].should == 'hdns'
+      end
+    end
+
+    it 'retrieves empty list if version unavailable' do
+      get '/available_upgrades?apps[]=hdns-99.0.1' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 0
+      end
+    end
+
+    it 'retrieves empty list if app not exist' do
+      get '/available_upgrades?apps[]=blablabla-0.0.1' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 0
+      end
+    end
+  end
+
   describe 'GET /apps/:app_id' do
     it 'gets app info with app name' do
       get '/apps/hdns' do

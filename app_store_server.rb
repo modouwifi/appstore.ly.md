@@ -42,6 +42,11 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.unavailable_apps.map(&:to_hash)
   end
 
+  # GET /available_upgrades?apps[]=hdns-0.4.1&apps[]=welcome-page-0.1
+  get '/available_upgrades' do
+    json Modou::Store.available_upgrades(params[:apps]).map(&:to_hash)
+  end
+
   # GET /apps/hdns                                  => hdns app info, json format
   # GET /apps/com.modouwifi.hdns                    => hdns app info, json format
   # GET /apps/452a1fea-66d2-4239-b450-3e4e05ac96db  => hdns app info, json format

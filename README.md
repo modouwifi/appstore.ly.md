@@ -80,6 +80,10 @@ X-Content-Type-Options: nosniff
 
     $ http get 'appstore.ly.md/apps?os_version=0.6.13&install_location=internal'
 
+### list available upgrades
+
+`GET /available_upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
+
 ### list unavailable apps (and why)
 
 `GET /unavailable_apps`

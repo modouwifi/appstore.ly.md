@@ -58,6 +58,13 @@ describe 'AppStoreServer' do
       end
     end
 
+    it 'gets available upgrades' do
+      get '/available_upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 2
+      end
+    end
+
     it 'retrieves empty list if version unavailable' do
       get '/available_upgrades?apps[]=hdns-99.0.1' do
         last_response.status.should == 200

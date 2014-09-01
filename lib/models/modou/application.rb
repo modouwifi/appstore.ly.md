@@ -47,7 +47,7 @@ module Modou
       hash['icon_url'] = icon_url
 
       hash['why_unavailable'] = self.why_unavailable if unavailable?
-
+      hash.delete('id')
       hash
     end
 

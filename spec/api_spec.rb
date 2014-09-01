@@ -110,6 +110,22 @@ describe 'AppStoreServer' do
         JSON(last_response.body).count.should == 0
       end
     end
+
+    it 'get available upgrades filtered with install_location' do
+      get '/apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1&install_location=external' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 1
+        JSON(last_response.body).first['name'].should == 'wps'
+      end
+    end
+
+    it 'get available upgrades filtered with os_version' do
+      get '/apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1&os_version=0.6.16' do
+        last_response.status.should == 200
+        JSON(last_response.body).count.should == 1
+        JSON(last_response.body).first['name'].should == 'hdns'
+      end
+    end
   end
 
   describe 'GET /apps/:app_id' do

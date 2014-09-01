@@ -1,5 +1,17 @@
 require_relative 'application'
 
+class Array
+  def filter_with_criteria(criteria)
+    if criteria[:os_version]
+      reject! { |app| Modou::SemanticVersion.new(app.require_os_version) > criteria[:os_version] }
+    end
+    if criteria[:install_location]
+      reject! { |app| app.cannot_install_at(criteria[:install_location]) }
+    end
+    self
+  end
+end
+
 module Modou
   class Store
     class << self
@@ -19,21 +31,14 @@ module Modou
 
       # return apps according to given criteria
       def apps(criteria = {})
-        all_available_apps.tap do |apps|
-          if criteria[:os_version]
-            apps.reject! { |app| SemanticVersion.new(app.require_os_version) > criteria[:os_version] }
-          end
-          if criteria[:install_location]
-            apps.reject! { |app| app.cannot_install_at(criteria[:install_location]) }
-          end
-        end
+        all_available_apps.filter_with_criteria(criteria)
       end
 
       def unavailable_apps
         all_apps.select(&:unavailable?).sort_by(&:updated_at).reverse
       end
 
-      def available_upgrades(app_full_names)
+      def available_upgrades(app_full_names, criteria = {})
         app_full_names.map do |app_full_name|
 
           app_full_name =~ /^(.+)-([^-]+)$/
@@ -44,7 +49,7 @@ module Modou
           else
             nil
           end
-        end.compact
+        end.compact.filter_with_criteria(criteria)
       end
 
       # return app with app-name

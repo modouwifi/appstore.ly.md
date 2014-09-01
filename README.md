@@ -116,6 +116,8 @@ All params are __optional__
 
     $ http get 'appstore.ly.md/apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1'
 
+Parameters `os_version` and `install_location` can also be used here.
+
 ### list unavailable apps (and why)
 
 `GET /apps/unavailable`

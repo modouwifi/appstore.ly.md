@@ -46,10 +46,12 @@ class AppStoreServer < Sinatra::Application
   # GET /apps/com.modouwifi.hdns            => hdns app info, json format
   # GET /apps/hdns-0.4.4.mpk                => hdns mpk download
   get '/apps/:app_id' do
-    filepath = File.expand_path("../data/apps/#{params[:app_id]}", __FILE__)
-
-    if File.exists?(filepath)
-      send_qiniu_file "apps/#{params[:app_id]}"
+    if params[:app_id] =~ /^(.+)-([^-]+)\.mpk$/
+      if Modou::Store.app($1).version == $2
+        send_qiniu_file "apps/#{params[:app_id]}"
+      else
+        status 404
+      end
     else
       begin
         json Modou::Store.app(params[:app_id]).to_hash
@@ -98,10 +100,15 @@ class AppStoreServer < Sinatra::Application
     if File.exists?(filepath)
       icon_name = params[:app_id]
     else
-      icon_name = app.icon_name if app = Modou::Store.app(params[:app_id])
+      if app = Modou::Store.app(params[:app_id])
+        icon_name = app.icon_name
+      end
     end
 
-    # implicit 404 if file not found
-    send_qiniu_file "icons/#{icon_name}"
+    if icon_name
+      send_qiniu_file "icons/#{icon_name}"
+    else
+      status 404
+    end
   end
 end

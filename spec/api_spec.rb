@@ -76,6 +76,12 @@ describe 'AppStoreServer' do
         last_response.status.should == 404
       end
     end
+
+    it 'gets 404 if file not found' do
+      get '/apps/hdns-0.0.1.mpk' do
+        last_response.status.should == 404
+      end
+    end
   end
 
   describe 'GET /apps/:app_id/download' do
@@ -96,6 +102,41 @@ describe 'AppStoreServer' do
     it 'gets 404 if app not found' do
       get '/apps/some.random.stupid.app/download' do
         last_response.status.should == 404
+      end
+    end
+  end
+
+  describe 'GET /icons/:app_id' do
+    it 'gets 404 if app not found' do
+      get '/icons/blablabla' do
+        last_response.status.should == 404
+      end
+    end
+
+    it 'get 404 if file not found' do
+      get '/icons/blablabla-0.0.1.png' do
+        last_response.status.should == 404
+      end
+    end
+
+    it 'get icon file with app name' do
+      get '/icons/wps' do
+        last_response.status.should == 302
+        last_response.headers['Location'].should =~ /qiniudn\.com/
+      end
+    end
+
+    it 'get icon file with package_id' do
+      get '/icons/com.modouwifi.app-wps' do
+        last_response.status.should == 302
+        last_response.headers['Location'].should =~ /qiniudn\.com/
+      end
+    end
+
+    it 'get icon file with file name' do
+      get '/icons/wps-0.4.png' do
+        last_response.status.should == 302
+        last_response.headers['Location'].should =~ /qiniudn\.com/
       end
     end
   end

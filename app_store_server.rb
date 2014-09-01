@@ -42,9 +42,10 @@ class AppStoreServer < Sinatra::Application
     json Modou::Store.unavailable_apps.map(&:to_hash)
   end
 
-  # GET /apps/hdns                          => hdns app info, json format
-  # GET /apps/com.modouwifi.hdns            => hdns app info, json format
-  # GET /apps/hdns-0.4.4.mpk                => hdns mpk download
+  # GET /apps/hdns                                  => hdns app info, json format
+  # GET /apps/com.modouwifi.hdns                    => hdns app info, json format
+  # GET /apps/452a1fea-66d2-4239-b450-3e4e05ac96db  => hdns app info, json format
+  # GET /apps/hdns-0.4.4.mpk                        => hdns mpk download
   get '/apps/:app_id' do
     if params[:app_id] =~ /^(.+)-([^-]+)\.mpk$/
       if Modou::Store.app($1) && Modou::Store.app($1).version == $2
@@ -91,9 +92,10 @@ class AppStoreServer < Sinatra::Application
     raise 'not implemented yet'
   end
 
-  # GET /icons/hdns                         => hdns icon download
-  # GET /icons/com.modouwifi.hdns           => hdns icon download
-  # GET /icons/hdns-0.4.4.png               => hdns icon download
+  # GET /icons/hdns                                  => hdns icon download
+  # GET /icons/com.modouwifi.hdns                    => hdns icon download
+  # GET /icons/452a1fea-66d2-4239-b450-3e4e05ac96db  => hdns icon download
+  # GET /icons/hdns-0.4.4.png                        => hdns icon download
   get '/icons/:app_id' do
     if params[:app_id] =~ /^(.+)-([^-]+)\.png$/
       if Modou::Store.app($1) && Modou::Store.app($1).version == $2

@@ -72,6 +72,13 @@ describe 'AppStoreServer' do
       end
     end
 
+    it 'gets app info with uuid' do
+      get '/apps/452a1fea-66d2-4239-b450-3e4e05ac96db' do
+        last_response.status.should == 200
+        JSON(last_response.body)['name'].should == 'hdns'
+      end
+    end
+
     it 'gets 404 if app not found' do
       get '/apps/wahahahahahaha' do
         last_response.status.should == 404
@@ -93,14 +100,21 @@ describe 'AppStoreServer' do
     it 'gets app mpk with app name' do
       get '/apps/hdns/download' do
         last_response.status.should == 302
-        last_response.headers['location'].should =~ /qiniudn.com\/apps\/hdns/
+        last_response.headers['location'].should =~ /qiniudn\.com\/apps\/hdns/
       end
     end
 
     it 'gets app with app package_id as well' do
       get '/apps/com.modouwifi.hdns/download' do
         last_response.status.should == 302
-        last_response.headers['location'].should =~ /qiniudn.com\/apps\/hdns/
+        last_response.headers['location'].should =~ /qiniudn\.com\/apps\/hdns/
+      end
+    end
+
+    it 'gets app with uuid' do
+      get '/apps/452a1fea-66d2-4239-b450-3e4e05ac96db/download' do
+        last_response.status.should == 302
+        last_response.headers['location'].should =~ /qiniudn\.com\/apps\/hdns/
       end
     end
 
@@ -142,6 +156,13 @@ describe 'AppStoreServer' do
       get '/icons/wps-0.4.png' do
         last_response.status.should == 302
         last_response.headers['Location'].should =~ /qiniudn\.com/
+      end
+    end
+
+    it 'gets icon file with uuid' do
+      get '/icons/b727179e-4143-4d60-8e88-7c24c81d1027' do
+        last_response.status.should == 302
+        last_response.headers['location'].should =~ /qiniudn\.com/
       end
     end
   end

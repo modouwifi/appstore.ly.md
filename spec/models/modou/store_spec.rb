@@ -17,6 +17,12 @@ module Modou
         it 'get app by package_id as well' do
           Store.app('com.modouwifi.hdns').name.should == 'hdns'
         end
+
+        it 'gets app by uuid' do
+          Store.app('452a1fea-66d2-4239-b450-3e4e05ac96db').name.should == 'hdns'
+          Store.app('b727179e-4143-4d60-8e88-7c24c81d1027').name.should == 'wps'
+          Store.app('b727179e-4143-4d60-8e88-7c24c81d1027').icon_name.should == 'wps-0.4.png'
+        end
       end
 
       describe '.apps' do

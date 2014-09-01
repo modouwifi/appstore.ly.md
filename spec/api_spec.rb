@@ -64,6 +64,13 @@ describe 'AppStoreServer' do
       end
     end
 
+    it 'gets app file with app file name' do
+      get '/apps/hdns-0.4.4.mpk' do
+        last_response.status.should == 302
+        last_response.headers['Location'].should =~ /qiniudn\.com/
+      end
+    end
+
     it 'gets 404 if app not found' do
       get '/apps/wahahahahahaha' do
         last_response.status.should == 404

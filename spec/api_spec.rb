@@ -55,8 +55,20 @@ describe 'AppStoreServer' do
       end
     end
 
+    it 'allow requests from http://127.0.0.1:3000' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://127.0.0.1:3000' } do
+        last_response.status.should == 200
+      end
+    end
+
     it 'disallow requests from http://192.168.1' do
       get '/apps', {}, { 'HTTP_ORIGIN' => 'http://192.168.1' } do
+        last_response.status.should == 403
+      end
+    end
+
+    it 'disallow requests from http://192.168.1:3000' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://192.168.1:3000' } do
         last_response.status.should == 403
       end
     end

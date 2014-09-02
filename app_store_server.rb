@@ -51,7 +51,7 @@ class AppStoreServer < Sinatra::Application
   before do
     headers 'Access-Control-Allow-Origin' => '*'
 
-    if ENV['CROSS_SITE_PREVENTION'] == true && env['HTTP_ORIGIN']
+    if ENV['CROSS_SITE_PREVENTION'] == "true" && env['HTTP_ORIGIN']
       halt 403 unless ALLOWED_ORIGINS.find { |p| env['HTTP_ORIGIN'] =~ p }
     end
   end

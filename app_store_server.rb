@@ -9,7 +9,7 @@ require "active_support"
 
 class AppStoreServer < Sinatra::Application
 
-  ALLOWED_ORIGINS = [ /http:\/\/modouwifi\.net/, /http:\/\/\d+\.\d+\.\d+\.\d+/ ].freeze
+  ALLOWED_ORIGINS = [ /^http:\/\/modouwifi\.net$/, /^http:\/\/\d+\.\d+\.\d+\.\d+$/ ].freeze
 
   # rate limiting
   if ENV['RACK_ENV'] == 'production'

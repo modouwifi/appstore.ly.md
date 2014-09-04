@@ -37,6 +37,12 @@ describe 'AppStoreServer' do
       end
     end
 
+    it 'allow requests from http://www.modouwifi.net' do
+      get '/apps', {}, { 'HTTP_ORIGIN' => 'http://www.modouwifi.net' } do
+        last_response.status.should == 200
+      end
+    end
+
     it 'disallow requests from http://modouwifi.net1' do
       get '/apps', {}, { 'HTTP_ORIGIN' => 'http://modouwifi.net1' } do
         last_response.status.should == 403

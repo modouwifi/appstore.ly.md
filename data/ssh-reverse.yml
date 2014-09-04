@@ -1,19 +1,19 @@
 ---
 package_id: com.modouwifi.app-ssh-reverse
-display_name: 反向SSH
+display_name: 远程协助
 author: 魔豆开发团队-阿耀
 email: zhouyao@mochui.net
 homepage: www.modouwifi.com
-version: '0.1'
+version: 0.1.3
 release_date: 2014.08.13
 icon: ./res/icon.png
-install_location: external
-description: 运行插件后，点击开始即可开启反向代理
+install_location: internal
+description: 运行插件后，点击开始即可开启远程协助
 instructions: ''
 require_os_version: 0.6.17
 name: ssh-reverse
-size: 870508
-md5_sum: 662d69708c00625f8bd63025958be1f2
-updated_at: '2014-09-01T03:23:36Z'
+size: 879138
+md5_sum: b5fc4bb67480b098d720880df4ff984d
+updated_at: '2014-09-04T03:15:53Z'
 available: true
 id: 7b6aae14-5a43-401d-9e8e-655619355eb0

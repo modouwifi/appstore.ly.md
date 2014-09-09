@@ -18,5 +18,6 @@ install_location: internal
 instructions: 
 require_os_version: 
 updated_at: '2014-09-01T03:23:36Z'
-available: true
+available: false
+why_unavailable: data too old
 id: 452a1fea-66d2-4239-b450-3e4e05ac96db

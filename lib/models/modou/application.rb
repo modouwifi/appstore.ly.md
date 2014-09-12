@@ -45,7 +45,7 @@ module Modou
         end
       end
 
-      hash['url'] = "http://appstore.ly.md/apps/#{fullname}"
+      hash['url'] = "http://#{ENV['API_HOSTNAME']}/apps/#{fullname}"
       hash['icon_url'] = icon_url
 
       hash['why_unavailable'] = self.why_unavailable if unavailable?
@@ -58,7 +58,7 @@ module Modou
     end
 
     def icon_url
-      "http://appstore.ly.md/icons/#{icon_name}"
+      "http://#{ENV['API_HOSTNAME']}/icons/#{icon_name}"
     end
 
     def icon_name

@@ -1,0 +1,22 @@
+---
+name: hdns
+author: 魔豆路由器
+version: 0.4.4
+homepage: www.modouwifi.com
+url: https://github.com/modouwifi/hdns/releases/download/hdns0.4.2/hdns-0.4.2.mpk
+email: rd@mochui.net
+package_id: com.modouwifi.hdns
+description: 科学上网
+size: 13259
+md5_sum: 8f06cbeca5ed5b6225e95dbc760851f0
+author_mail: rd@mochui.net
+release_date: 2014.08.18
+icon: ./res/icon_111X111.png
+location: internal
+display_name: 科学上网
+install_location: internal
+instructions: 
+require_os_version: 
+updated_at: '2014-09-01T03:23:36Z'
+available: true
+id: 452a1fea-66d2-4239-b450-3e4e05ac96db

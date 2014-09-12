@@ -1,0 +1,24 @@
+---
+name: backlight-control
+author: 魔豆开发团队
+version: '0.2'
+homepage: www.modouwifi.com
+url: https://github.com/modouwifi/backlight-control/releases/download/1.0/backlight-control.tar.gz
+email: cs@mochui.net
+package_id: com.modouwifi.backlight-control
+description: 使用此应用可以开启或关闭魔豆屏幕的背光自动熄灭功能
+size: 3657
+md5_sum: 31330db8ad82d974cec2278d34ccd9a6
+author_mail: cs@mochui.net
+release_date: 2014.08.18
+icon: ./appicon_backlight_normal.png
+location: internal
+instruction: 开启应用后就两个按钮，简单明了
+os_version: 0.6.17
+display_name: 背光控制
+install_location: internal
+instructions: 开启应用后就两个按钮，简单明了
+require_os_version: 0.6.17
+updated_at: '2014-09-01T03:23:36Z'
+available: true
+id: e68d3621-2f56-4d4a-a3c8-925040a5cacb

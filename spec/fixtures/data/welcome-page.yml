@@ -1,0 +1,20 @@
+---
+package_id: com.modouwifi.welcome-page
+display_name: welcome-page
+author: 魔豆路由器
+email: rd@mochui.net
+homepage: www.modouwifi.com
+version: 0.4.1
+release_date: 2014.08.19
+icon: ./res/icon_111X111.png
+install_location: internal
+description: 欢迎页
+instructions: 
+require_os_version: 
+size: 69218
+md5_sum: bec09075dfcafaf07061a8d8b76f7fc2
+name: welcome-page
+updated_at: '2014-09-01T03:23:37Z'
+available: false
+why_unavailable: bug
+id: cb36bfa9-8fb8-4669-a738-4bf1ca42157f

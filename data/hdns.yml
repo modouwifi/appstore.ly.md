@@ -1,23 +1,23 @@
 ---
 name: hdns
 author: 魔豆路由器
-version: 0.4.6
+version: 0.4.7
 homepage: www.modouwifi.com
 url: https://github.com/modouwifi/hdns/releases/download/hdns0.4.2/hdns-0.4.2.mpk
 email: rd@mochui.net
 package_id: com.modouwifi.hdns
 description: 自定义DNS
-size: 13130
-md5_sum: 0f937ceff331760bcbb69fe17c3612d1
+size: 13170
+md5_sum: c7f503b2b57ebf75d10f3a2da0718d72
 author_mail: rd@mochui.net
-release_date: 2014.09.12
+release_date: 2014.09.25
 icon: ./res/icon_111X111.png
 location: internal
 display_name: 自定义DNS
 install_location: internal
 instructions: 
 require_os_version: 0.5.28
-updated_at: '2014-09-12T23:57:22Z'
+updated_at: '2014-09-26T03:53:39Z'
 available: true
 why_unavailable: data too old
 id: 452a1fea-66d2-4239-b450-3e4e05ac96db

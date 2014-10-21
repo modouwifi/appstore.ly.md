@@ -9,6 +9,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     backports (3.6.0)
+    bundle (0.0.1)
+      bundler
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -127,6 +129,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  bundle
   coveralls
   dotenv
   guard

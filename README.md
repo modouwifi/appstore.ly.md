@@ -281,3 +281,13 @@ Percentage of the requests served within a certain time (ms)
   99%    647
  100%    897 (longest request)
 ```
+
+## Start up development server on Mac OS X
+
+```
+$ brew install rbenv ruby-build
+$ gem install -g
+$ foreman start
+```
+
+

@@ -15,13 +15,39 @@ end
 module Modou
   class Store
     class << self
-      # all apps
-      def all_apps
-        [].tap do |apps|
-          Dir[File.expand_path('../../../../data/*.yml',  __FILE__)].each do |yml_file|
-            apps << Modou::Application.create_from_yml(File.read(yml_file))
+
+      attr_accessor :apps_data
+
+      def find(router_system_info = {:track => 'stable'})
+        @apps_data = apps_by_stable
+        if router_system_info[:track] != 'stable'
+          @apps_data = apps.concat(apps_by_dev)
+        end
+        self
+      end
+
+      # For Stable Router
+      def apps_by_stable
+        [].tap do |stable_apps|
+          Dir[File.expand_path('../../../../data/stable/*.yml',  __FILE__)].each do |yml_file|
+            stable_apps << Modou::Application.create_from_yml(File.read(yml_file))
           end
         end
+      end
+
+      # For Development Router
+      def apps_by_dev
+        [].tap do |dev_apps|
+          # For Stable Router
+          Dir[File.expand_path('../../../../data/dev/*.yml',  __FILE__)].each do |yml_file|
+            dev_apps << Modou::Application.create_from_yml(File.read(yml_file))
+          end
+        end
+      end
+
+      # all apps
+      def all_apps
+        @apps_data
       end
 
       # all available apps

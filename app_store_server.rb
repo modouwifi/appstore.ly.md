@@ -9,6 +9,8 @@ require "active_support"
 
 class AppStoreServer < Sinatra::Application
 
+  attr_accessor :router_system_info
+
   ALLOWED_ORIGINS = [ /^http:\/\/(www\.)?modouwifi\.net$/, /^http:\/\/\d+\.\d+\.\d+\.\d+(:\d+)?$/ ].freeze
 
   # rate limiting
@@ -21,7 +23,7 @@ class AppStoreServer < Sinatra::Application
     #   # Requests are blocked if the return value is truthy
     #   require "yaml"
     #
-    #   ips = YAML.load_file(File.expand_path('../data/blacklisted_ips.yml', __FILE__))
+    #   ips = YAML.load_file(File.expand_path('../data/stable/blacklisted_ips.yml', __FILE__))
     #
     #   ips.include?(req.ip)
     # end
@@ -49,6 +51,13 @@ class AppStoreServer < Sinatra::Application
   end
 
   before do
+    # Router System Info
+    @router_system_info = {
+      :track => params['track'] || '',
+      :version1 => params['version1'] || '',
+      :version2 => params['version2'] || ''
+    }
+
     headers 'Access-Control-Allow-Origin' => '*'
 
     if ENV['CROSS_SITE_PREVENTION'] == "true" && env['HTTP_ORIGIN']
@@ -62,6 +71,10 @@ class AppStoreServer < Sinatra::Application
 
       redirect Qiniu::Auth.authorize_download_url(primitive_url)
     end
+
+    def app_store
+      Modou::Store.find(@router_system_info)
+    end
   end
 
   # GET /apps                               => list all apps info, json format
@@ -74,17 +87,17 @@ class AppStoreServer < Sinatra::Application
       params[:install_location] = nil
     end
 
-    json Modou::Store.apps(params).map(&:to_hash)
+    json app_store.apps(params).map(&:to_hash)
   end
 
   # GET /apps/unavailable                   => list all apps info, json format
   get '/apps/unavailable' do
-    json Modou::Store.unavailable_apps.map(&:to_hash)
+    json app_store.unavailable_apps.map(&:to_hash)
   end
 
   # GET /apps/upgrades?apps[]=hdns-0.4.1&apps[]=welcome-page-0.1
   get '/apps/upgrades' do
-    json Modou::Store.available_upgrades(params[:apps], params).map(&:to_hash)
+    json app_store.available_upgrades(params[:apps], params).map(&:to_hash)
   end
 
   # GET /apps/hdns                                  => hdns app info, json format
@@ -93,14 +106,14 @@ class AppStoreServer < Sinatra::Application
   # GET /apps/hdns-0.4.4.mpk                        => hdns mpk download
   get '/apps/:app_id' do
     if params[:app_id] =~ /^(.+)-([^-]+)\.mpk$/
-      if Modou::Store.app($1) && Modou::Store.app($1).version == $2
+      if app_store.app($1) && app_store.app($1).version == $2
         send_qiniu_file "apps/#{params[:app_id]}"
       else
         status 404
       end
     else
       begin
-        json Modou::Store.app(params[:app_id]).to_hash
+        json app_store.app(params[:app_id]).to_hash
       rescue Exception => e
         status 404
       end
@@ -110,7 +123,7 @@ class AppStoreServer < Sinatra::Application
   # GET /apps/hdns/download                 => hdns mpk download
   # GET /apps/com.modouwifi.hdns/download   => hdns mpk download
   get '/apps/:app_id/download' do
-    app = Modou::Store.app(params[:app_id])
+    app = app_store.app(params[:app_id])
 
     if app
       send_qiniu_file "apps/#{app.fullname}"
@@ -122,7 +135,7 @@ class AppStoreServer < Sinatra::Application
   # GET /apps/hdns/icon                     => hdns icon download
   # GET /apps/com.modouwifi.hdns/icon       => hdns icon download
   get '/apps/:app_id/icon' do
-    app = Modou::Store.app(params[:app_id])
+    app = app_store.app(params[:app_id])
 
     if app
       send_qiniu_file "icons/#{app.icon_name}"
@@ -143,11 +156,11 @@ class AppStoreServer < Sinatra::Application
   # GET /icons/hdns-0.4.4.png                        => hdns icon download
   get '/icons/:app_id' do
     if params[:app_id] =~ /^(.+)-([^-]+)\.png$/
-      if Modou::Store.app($1) && Modou::Store.app($1).version == $2
+      if app_store.app($1) && app_store.app($1).version == $2
         icon_name = params[:app_id]
       end
     else
-      if app = Modou::Store.app(params[:app_id])
+      if app = app_store.app(params[:app_id])
         icon_name = app.icon_name
       end
     end

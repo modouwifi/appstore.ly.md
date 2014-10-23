@@ -21,7 +21,7 @@ module Modou
       def find(router_system_info = {:track => 'stable'})
         @apps_data = apps_by_stable
         if router_system_info[:track] != 'stable'
-          @apps_data = apps.concat(apps_by_dev)
+          @apps_data.concat(apps_by_dev)
         end
         self
       end

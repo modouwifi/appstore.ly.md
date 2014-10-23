@@ -104,6 +104,22 @@ describe 'AppStoreServer' do
         JSON(last_response.body).count.should < Modou::Store.all_available_apps.count
       end
     end
+
+    it 'filter apps with track, stable' do
+      get '/apps?track=stable' do
+        expect(last_response).to be_ok
+
+        JSON(last_response.body).count.should == Modou::Store.apps_by_stable.select(&:available?).sort_by(&:updated_at).count
+      end
+    end
+
+    it 'filter apps with track, dev' do
+      get '/apps?track=inter' do
+        expect(last_response).to be_ok
+
+        JSON(last_response.body).count.should == Modou::Store.find({:track => 'inter'}).all_available_apps.count
+      end
+    end
   end
 
   describe 'GET /apps/unavailble' do

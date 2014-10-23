@@ -287,6 +287,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 $ brew install rbenv ruby-build
 $ gem install -g
+$ rspec
 $ foreman start
 ```
 

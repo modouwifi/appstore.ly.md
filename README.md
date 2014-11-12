@@ -289,6 +289,10 @@ $ brew install rbenv ruby-build
 $ gem install -g
 $ rspec
 $ foreman start
+
+# Maybe you need to mkdir some dirs
+$ mkdir -p data/apps
+$ mkdir -p tmp/cache/apps
 ```
 
 

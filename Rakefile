@@ -31,27 +31,41 @@ end
 
 desc 'copy and rename downloaded apps from tmp/cache/apps to data/apps'
 task :release_apps do
+  require "yaml"
   Dir['tmp/cache/apps/*'].each do |app_file|
     if manifest_hash = manifest_hash_for_file(app_file)
-      require "yaml"
+      # 0: none, 1: stable, 2: dev
+      channel = 0
 
-      yml_file = Dir['data/*.yml'].select do |file|
+      # Stable
+      yml_file = Dir['data/stable/*.yml'].select do |file|
         YAML.load_file(file)['package_id'] == manifest_hash['package_id']
       end.first
 
       if yml_file
+        channel = 1
+      else
+        # Dev
+        yml_file = Dir['data/dev/*.yml'].select do |file|
+          YAML.load_file(file)['package_id'] == manifest_hash['package_id']
+        end.first
+        if yml_file
+          channel = 2
+        end
+      end
+
+      if channel != 0
         app_info = YAML.load_file(yml_file)
         `cp #{app_file} data/apps/#{app_info['name']}-#{app_info['version']}.mpk`
-
         tmp_folder = tmp_folder_for_app_name(app_name_for_app_file(app_file))
         require "pathname"
-
         icon_path = Pathname.new(tmp_folder).join(manifest_hash['icon'])
 
         if File.exists?(icon_path)
           `cp #{icon_path} #{icon_path_for_app(app_info)}`
         end
       end
+
     else
       puts "manifest.json not found for #{app_file}"
     end

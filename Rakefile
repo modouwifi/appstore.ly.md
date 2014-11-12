@@ -6,13 +6,24 @@ task :download_apps do
 
   YAML.load_file('app-links.yml')['github'].each do |app|
     require "octokit"
+    require "dotenv"
+    Dotenv.load
 
-    latest_release = Octokit.releases(app).first
+    if ENV['GITHUB_CLIENT_ID'] && ENV['GITHUB_CLIENT_SECRET']
+      client = Octokit::Client.new \
+        :client_id     => ENV['GITHUB_CLIENT_ID'],
+        :client_secret => ENV['GITHUB_CLIENT_SECRET']
+    else
+      client = Octokit
+    end
+
+    latest_release = client.releases(app).first
     asset = latest_release.assets.first
 
     if File.exists?("tmp/cache/apps/#{asset.name}")
       puts "#{asset.name} is already downloaded."
     else
+      puts "#{asset.name}, #{asset.browser_download_url}"
       system(ENV, "wget #{asset.browser_download_url} -O tmp/cache/apps/#{asset.name}")
     end
   end

@@ -87,23 +87,41 @@ end
 
 desc 'generate meta info for app store from downloaded apps'
 task :gen_meta do
+  require "yaml"
+  require 'digest'
+  require 'securerandom'
+
   Dir['tmp/cache/apps/*'].each do |app_file|
-    require "yaml"
 
     if manifest_hash = manifest_hash_for_file(app_file)
+      # 0: none, 1: stable, 2: dev
+      channel = 0
 
-      yml_file = Dir['data/*.yml'].select do |file|
+      # Stable
+      yml_file = Dir["data/stable/*.yml"].select do |file|
         YAML.load_file(file)['package_id'] == manifest_hash['package_id']
       end.first
 
       if yml_file
-        # already has definition, update it
-        app_info = merge_manifest_hash(YAML.load_file(yml_file), manifest_hash)
+        channel = 1
       else
-        # new app, create it
+        # Dev
+        yml_file = Dir["data/dev/*.yml"].select do |file|
+          YAML.load_file(file)['package_id'] == manifest_hash['package_id']
+        end.first
+        if yml_file
+          channel = 2
+        end
+      end
+
+      # defaults release to Stable
+      if channel == 0
         app_info = merge_manifest_hash({}, manifest_hash)
         app_info['id'] = SecureRandom.uuid
-        yml_file = "data/#{manifest_hash['name']}.yml"
+        yml_file = "data/stable/#{manifest_hash['name']}.yml"
+      else
+        # already has definition, update it
+        app_info = merge_manifest_hash(YAML.load_file(yml_file), manifest_hash)
       end
 
       app_info['size'] = File.size(app_file)

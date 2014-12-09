@@ -12,7 +12,7 @@ Follow [Guidelines extracted from Heroku Platform API](https://github.com/intera
 
 10 requests per minute. When rate limit is reached, a status code of `429` is returned.
 
-    $ http appstore.ly.md/apps
+    $ http appstore.ly.md/apps/all
 
 ```
 HTTP/1.1 429 Too Many Requests
@@ -37,7 +37,7 @@ For latest API definitions, please refer to [app_store_server.rb](https://github
 
 `GET /apps`
 
-    $ http get appstore.ly.md/apps
+    $ http get appstore.ly.md/apps/all
 
 Output:
 
@@ -131,9 +131,9 @@ Parameters `os_version` and `install_location` can also be used here.
 
 ### get info of a certain app
 
-`GET /apps/APP_NAME`
+`GET /apps/single?app_name=APP_NAME`
 
-    $ http get appstore.ly.md/apps/hdns
+    $ http get appstore.ly.md/apps/single?app_name=hdns
 
 Output:
 
@@ -175,9 +175,9 @@ X-Content-Type-Options: nosniff
 
 ### download a certain app
 
-`GET /apps/APP_NAME/download`
+`GET /apps/download?app_name=APP_NAME`
 
-    $ http get appstore.ly.md/apps/hdns/download
+    $ http get appstore.ly.md/apps/download?app_name=hdns
 
 Output:
 
@@ -205,9 +205,9 @@ X-Content-Type-Options: nosniff
 
 ### get icon of a certain app
 
-`GET /apps/APP_NAME/icon`
+`GET /apps/icon?app_name=APP_NAME`
 
-    $ http get appstore.ly.md/apps/wps/icon
+    $ http get appstore.ly.md/apps/icon?app_name=APP_NAME
 
 Output:
 
@@ -239,7 +239,7 @@ Throughput 500 requests per second, or 20,000 requests per minute.
 
 benchmark with command
 
-    $ ab -n 2000 -c 200 http://appstore.ly.md/apps
+    $ ab -n 2000 -c 200 http://appstore.ly.md/apps/all
 
 Output:
 

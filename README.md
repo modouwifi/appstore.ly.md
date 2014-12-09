@@ -8,27 +8,6 @@
 
 Follow [Guidelines extracted from Heroku Platform API](https://github.com/interagent/http-api-design)
 
-## Rate Limits
-
-10 requests per minute. When rate limit is reached, a status code of `429` is returned.
-
-    $ http appstore.ly.md/apps/all
-
-```
-HTTP/1.1 429 Too Many Requests
-Connection: close
-Content-Type: text/plain
-Date: Mon, 01 Sep 2014 09:33:39 GMT
-Retry-After: 60
-Server: Cowboy
-Status: 429 Too Many Requests
-Via: 1.1 vegur
-X-Content-Type-Options: nosniff
-
-Retry later
-
-```
-
 ## APIs
 
 For latest API definitions, please refer to [app_store_server.rb](https://github.com/modouwifi/appstore.ly.md/blob/master/app_store_server.rb)
@@ -37,7 +16,7 @@ For latest API definitions, please refer to [app_store_server.rb](https://github
 
 `GET /apps`
 
-    $ http get appstore.ly.md/apps/all
+    $ http get appstore.ly.md/apps/all?track=stable
 
 Output:
 
@@ -62,7 +41,7 @@ X-Content-Type-Options: nosniff
         "email": "junjian@mochui.net",
         "homepage": "www.modouwifi.com",
         "icon": "./res/icon.png",
-        "icon_url": "http://appstore.ly.md/icons/pppoe-migration-assistant-0.2.1.png",
+        "icon_url": "http://appstore.ly.md/apps/icons?appname=pppoe-migration-assistant",
         "install_location": "internal",
         "instructions": "1.xxxx; 2.xxxxx",
         "md5_sum": "fbc54da61c5d59f589b8179bc90cf194",
@@ -72,7 +51,7 @@ X-Content-Type-Options: nosniff
         "require_os_version": "0.6.12",
         "size": 52330,
         "updated_at": "2014-09-01T03:23:37Z",
-        "url": "http://appstore.ly.md/apps/pppoe-migration-assistant-0.2.1.mpk",
+        "url": "http://appstore.ly.md/apps/download?appname=pppoe-migration-assistant",
         "version": "0.2.1"
     },
     {
@@ -83,7 +62,7 @@ X-Content-Type-Options: nosniff
         "email": "cs@mochui.net",
         "homepage": "www.modouwifi.com",
         "icon": "./appicon_backlight_normal.png",
-        "icon_url": "http://appstore.ly.md/icons/backlight-control-0.2.png",
+        "icon_url": "http://appstore.ly.md/apps/icons?appname=backlight-control",
         "install_location": "internal",
         "instructions": "开启应用后就两个按钮，简单明了",
         "md5_sum": "31330db8ad82d974cec2278d34ccd9a6",
@@ -93,7 +72,7 @@ X-Content-Type-Options: nosniff
         "require_os_version": "0.6.17",
         "size": 3657,
         "updated_at": "2014-09-01T03:23:36Z",
-        "url": "http://appstore.ly.md/apps/backlight-control-0.2.mpk",
+        "url": "http://appstore.ly.md/apps/download?appname=backlight-control",
         "version": "0.2"
     },
 // more here...
@@ -102,32 +81,17 @@ X-Content-Type-Options: nosniff
 
 ### list available apps by criteria
 
-`GET /apps?os_version=CURRENT_OS_VERSION&install_location=INSTALL_LOCATION`
+`GET /apps/all?track=[stable|main]`
 
-    $ http get 'appstore.ly.md/apps?os_version=0.6.13&install_location=internal'
+    $ http get 'appstore.ly.md/apps?track=stable'
 
 #### params format
 
 | params                | format                    | example
 | --------------------- | ------------------------- | --------
-| CURRENT_OS_VERSION    | major.minor.patch         | 0.6.20
-| INSTALL_LOCATION      | 'internal' or 'external'  | internal
+| track                 | [stable] or [main]        | stable
 
 All params are __optional__
-
-### list available upgrades
-
-`GET /apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1`
-
-    $ http get 'appstore.ly.md/apps/upgrades?apps[]=hdns-0.0.1&apps[]=wps-0.0.1'
-
-Parameters `os_version` and `install_location` can also be used here.
-
-### list unavailable apps (and why)
-
-`GET /apps/unavailable`
-
-    $ http get 'appstore.ly.md/apps/unavailable'
 
 ### get info of a certain app
 
@@ -157,7 +121,7 @@ X-Content-Type-Options: nosniff
     "email": "rd@mochui.net",
     "homepage": "www.modouwifi.com",
     "icon": "./res/icon_111X111.png",
-    "icon_url": "http://appstore.ly.md/icons/hdns-0.4.4.png",
+    "icon_url": "http://appstore.ly.md/apps/icons?appname=hdns",
     "install_location": "internal",
     "instructions": null,
     "md5_sum": "8f06cbeca5ed5b6225e95dbc760851f0",
@@ -167,7 +131,7 @@ X-Content-Type-Options: nosniff
     "require_os_version": null,
     "size": 13259,
     "updated_at": "2014-09-01T03:23:36Z",
-    "url": "http://appstore.ly.md/apps/hdns-0.4.4.mpk",
+    "url": "http://appstore.ly.md/apps/download?appname=hdns",
     "version": "0.4.4"
 }
 

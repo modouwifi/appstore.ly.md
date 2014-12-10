@@ -83,7 +83,7 @@ X-Content-Type-Options: nosniff
 
 `GET /apps/all?track=[stable|main]`
 
-    $ http get 'appstore.ly.md/apps?track=stable'
+    $ http get 'appstore.ly.md/apps/all?track=stable'
 
 #### params format
 

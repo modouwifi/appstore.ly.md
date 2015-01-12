@@ -95,9 +95,9 @@ All params are __optional__
 
 ### get info of a certain app
 
-`GET /apps/single?app_name=APP_NAME`
+`GET /apps/single?appname=APPNAME`
 
-    $ http get appstore.ly.md/apps/single?app_name=hdns
+    $ http get appstore.ly.md/apps/single?appname=app-ss-vpn
 
 Output:
 
@@ -139,9 +139,9 @@ X-Content-Type-Options: nosniff
 
 ### download a certain app
 
-`GET /apps/download?app_name=APP_NAME`
+`GET /apps/download?appname=APPNAME`
 
-    $ http get appstore.ly.md/apps/download?app_name=hdns
+    $ http get appstore.ly.md/apps/download?appname=app-ss-vpn
 
 Output:
 
@@ -169,9 +169,9 @@ X-Content-Type-Options: nosniff
 
 ### get icon of a certain app
 
-`GET /apps/icon?app_name=APP_NAME`
+`GET /apps/icon?appname=APPNAME`
 
-    $ http get appstore.ly.md/apps/icon?app_name=APP_NAME
+    $ http get appstore.ly.md/apps/icon?appname=APPNAME
 
 Output:
 
